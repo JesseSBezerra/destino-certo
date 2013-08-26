@@ -40,14 +40,17 @@ public class ControladorUsuario {
 		return usuario;
 	}
 	
-	public void remover(String login){
+	public String remover(String login){
+		String mensagem = null;
 		try {
 			Usuario usuario = procurar(login);
 			iRepositorioUsuario.remover(usuario);
+			mensagem = "removido com sucesso!";
 		} catch (UsuarioNaoEncontradoExcepition e) {
 			// TODO Auto-generated catch block
-			System.err.println(e.getMessage());
-		} 
+			mensagem = e.getMessage();
+		}
+		return mensagem;
 	}
 	
 	public String editar(Usuario usuario){

@@ -14,10 +14,10 @@ public class Teste {
 ////		for(int i = 0; i<=5;i++){
 	Usuario usuario = new Usuario();
 //	    ControladorUsuario controladorUsuario = new ControladorUsuario(new RepositorioUsuario());
-	    usuario.setNome("Jessé dos Santos Bezerra");
+//	    usuario.setNome("Jessé dos Santos Bezerra");
 	    usuario.setLogin("mamão0");
-	    usuario.setSenha("1");
-	    usuario.setEmail("jessebezerra@hotmail.com.br");
+//	    usuario.setSenha("1");
+//	    usuario.setEmail("jessebezerra@hotmail.com.br");
 //	    controladorUsuario.cadastrar(usuario);
 //////		}
 //	     usuario = controladorUsuario.procurar("JBezerra");
@@ -27,7 +27,7 @@ public class Teste {
 //	    
 //	    System.out.println(controladorUsuario.listar().size());
 	Fachada fachada = Fachada.getInstance();
-	fachada.usuarioCadastrar(usuario);
+	 System.out.println(fachada.usuarioRemover(usuario));
 
 	}
 

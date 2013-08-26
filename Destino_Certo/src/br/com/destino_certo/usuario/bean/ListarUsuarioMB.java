@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import br.com.destino_certo.usuario.modelo.Usuario;
+import br.com.destino_certo.util.autenticar.FacesContextUtil;
 import br.com.destino_certo.util.fachada.Fachada;
 
 @ManagedBean
@@ -21,6 +22,21 @@ public class ListarUsuarioMB {
 		// TODO Auto-generated constructor stub
     fachada = Fachada.getInstance();
     lista = fachada.listar();
+	}
+	
+	public void selecionar(Usuario usuario){
+		this.usuario = usuario;
+	}
+	
+	public void remover(){
+		lista.remove(usuario);
+		FacesContextUtil.setMessageInformacao("Info", fachada.usuarioRemover(usuario));
+		usuario = new Usuario();
+	}
+	
+	public void editar(){
+		FacesContextUtil.setMessageInformacao("Info", fachada.usuarioEditar(usuario));
+		usuario = new Usuario();
 	}
 
 	public List<Usuario> getLista() {
@@ -42,6 +58,7 @@ public class ListarUsuarioMB {
 	public List<Usuario> getListaSelecionada() {
 		return listaSelecionada;
 	}
+	
 
 	public void setListaSelecionada(List<Usuario> listaSelecionada) {
 		this.listaSelecionada = listaSelecionada;

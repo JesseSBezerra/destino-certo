@@ -35,6 +35,14 @@ public class Fachada {
 		controladorUsuario.cadastrar(usuario);
 	}
 	
+	public String usuarioRemover(Usuario usuario){
+		return controladorUsuario.remover(usuario.getLogin());
+	}
+	
+	public String usuarioEditar(Usuario usuario){
+		return controladorUsuario.editar(usuario);			
+	}
+	
 	public Usuario usuarioProcurar(String login){
 		return controladorUsuario.procurar(login);
 	}

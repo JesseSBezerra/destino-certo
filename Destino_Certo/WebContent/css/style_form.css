@@ -1,0 +1,59 @@
+@CHARSET "ISO-8859-1";
+
+form{
+	position: relative;
+	font-size: 12px;
+}
+form br{
+	clear: both;
+}
+form label{
+	position: relative;
+	float: left;
+	margin-bottom: 5px;
+}
+form label strong{
+	position: relative;
+	float: left;
+	margin-bottom: 10px;
+	margin-top:10px;
+}
+form input[type=text]{
+	position: relative;
+	float: left;
+	padding: 5px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+}
+/*forms*/
+.form_fornecedor{
+	position: relative;
+	width: 400px;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+.form_produto{
+	position: relative;
+	width: 400px;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+/*Whidth*/
+.wh130{
+	width: 130px;
+}
+.wh150{
+	width: 150px;
+}
+.wh230{
+	width: 230px;
+}
+.wh250{
+	width: 250px;
+}
+.wh377{
+	width: 377px;
+}
+.wh400{
+	width: 400px;
+}
