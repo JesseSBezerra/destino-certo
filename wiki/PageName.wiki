@@ -1,0 +1,20 @@
+#summary One-sentence summary of this page.
+
+= Introdução =
+
+[RF 001] Autenticar usuário
+Descrição: Este requisito possibilita que o usuário tenha acesso as funcionalidades gerenciais do software, para tanto será necessário a inserção de um login e senha.
+Prioridade: Essencial 
+Ator: Administrador
+
+[RF 002] Cadastrar usuário
+Descrição: Este requisito possibilita que o usuário cadastre novos usuários no sistema.
+Prioridade: Essencial
+Ator: Administrador
+
+[RF 005] Listar usuário
+Descrição: Este requisito possibilita que o usuário liste todos os usuários cadastrados no sistema.
+Prioridade: Essencial
+Ator: Administrador
+
+
