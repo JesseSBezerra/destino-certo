@@ -1,6 +1,9 @@
 package br.com.destino_certo.util.teste;
 
 
+import br.com.destino_certo.itinerario.controlador.ControladorItinerario;
+import br.com.destino_certo.itinerario.modelo.Itinerario;
+import br.com.destino_certo.itinerario.modelo.RepositorioItinerario;
 import br.com.destino_certo.onibus.controlador.ControladorOnibus;
 import br.com.destino_certo.onibus.modelo.Onibus;
 import br.com.destino_certo.onibus.modelo.RepositorioOnibus;
@@ -17,6 +20,7 @@ public class Teste {
 ////		for(int i = 0; i<=5;i++){
 	Usuario usuario = new Usuario();
 	Onibus onibus = new Onibus();
+	Itinerario itinerario = new Itinerario();
 //	    ControladorUsuario controladorUsuario = new ControladorUsuario(new RepositorioUsuario());
 //	    usuario.setNome("Jessé dos Santos Bezerra");
 	    usuario.setLogin("mamão0");
@@ -33,11 +37,17 @@ public class Teste {
 //	Fachada fachada = Fachada.getInstance();
 //	 System.out.println(fachada.usuarioRemover(usuario));
 	    ControladorOnibus controladorOnibus = new ControladorOnibus(new RepositorioOnibus());
-	    onibus.setAtivo(true);
-	    onibus.setNumero(111129L);
-	    onibus.setNome("Teste");
-	    System.out.println(controladorOnibus.listar().size());
-	    System.out.println(controladorOnibus.listar("ativo", true).size());
+	    ControladorItinerario controladorItinerario = new ControladorItinerario(new RepositorioItinerario());
+//	    onibus.setAtivo(true);
+//	    onibus.setNumero(111129L);
+//	    onibus.setNome("Teste");
+	    itinerario.setAtivo(true);
+	    itinerario.setNome("Santa Rosa");
+	    itinerario.setNumero(2L);
+	    itinerario.setOnibus(controladorOnibus.procurar(111123L));
+	    System.out.println(controladorItinerario.cadastrar(itinerario));
+//	    System.out.println(controladorOnibus.listar().size());
+//	    System.out.println(controladorOnibus.listar("ativo", true).size());
 
 	}
 

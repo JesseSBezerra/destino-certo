@@ -2,6 +2,10 @@ package br.com.destino_certo.util.fachada;
 
 import java.util.List;
 
+import br.com.destino_certo.itinerario.controlador.ControladorItinerario;
+import br.com.destino_certo.itinerario.modelo.IRepositorioItinerario;
+import br.com.destino_certo.itinerario.modelo.Itinerario;
+import br.com.destino_certo.itinerario.modelo.RepositorioItinerario;
 import br.com.destino_certo.onibus.controlador.ControladorOnibus;
 import br.com.destino_certo.onibus.modelo.IRepositorioOnibus;
 import br.com.destino_certo.onibus.modelo.Onibus;
@@ -18,72 +22,105 @@ public class Fachada {
 	private IRepositorioUsuario iRepositorioUsuario;
 	private ControladorOnibus controladorOnibus;
 	private IRepositorioOnibus iRepositorioOnibus;
-	public static Fachada getInstance(){
-		if(instance == null){
+	private ControladorItinerario controladorItinerario;
+	private IRepositorioItinerario iRepositorioItinerario;
+
+	public static Fachada getInstance() {
+		if (instance == null) {
 			instance = new Fachada();
 		}
 		return instance;
-			
+
 	}
-	
+
 	private Fachada() {
 		// TODO Auto-generated constructor stub
 		instanciarRepositorios();
 	}
-	
-	private void instanciarRepositorios(){
-        iRepositorioUsuario = new RepositorioUsuario();
+
+	private void instanciarRepositorios() {
+		iRepositorioUsuario = new RepositorioUsuario();
 		controladorUsuario = new ControladorUsuario(iRepositorioUsuario);
 		iRepositorioOnibus = new RepositorioOnibus();
 		controladorOnibus = new ControladorOnibus(iRepositorioOnibus);
+		iRepositorioItinerario = new RepositorioItinerario();
+		controladorItinerario = new ControladorItinerario(
+				iRepositorioItinerario);
 	}
-	
-	//TODO USUARIO
-	
-	public void usuarioCadastrar(Usuario usuario){
+
+	// TODO USUARIO
+
+	public void usuarioCadastrar(Usuario usuario) {
 		controladorUsuario.cadastrar(usuario);
 	}
-	
-	public String usuarioRemover(Usuario usuario){
+
+	public String usuarioRemover(Usuario usuario) {
 		return controladorUsuario.remover(usuario.getLogin());
 	}
-	
-	public String usuarioEditar(Usuario usuario){
-		return controladorUsuario.editar(usuario);			
+
+	public String usuarioEditar(Usuario usuario) {
+		return controladorUsuario.editar(usuario);
 	}
-	
-	public Usuario usuarioProcurar(String login){
+
+	public Usuario usuarioProcurar(String login) {
 		return controladorUsuario.procurar(login);
 	}
-	
-	public List<Usuario> listar(){
+
+	public List<Usuario> listar() {
 		return controladorUsuario.listar();
 	}
-	
-	//TODO ONIBUS
-	
-	public String onibusCadastrar(Onibus onibus){
+
+	// TODO ONIBUS
+
+	public String onibusCadastrar(Onibus onibus) {
 		return controladorOnibus.cadastrar(onibus);
 	}
-	
-	public String onibusRemover(Onibus onibus){
+
+	public String onibusRemover(Onibus onibus) {
 		return controladorOnibus.remover(onibus);
 	}
-	
-	public String onibusEditar(Onibus onibus){
-		return controladorOnibus.editar(onibus);			
+
+	public String onibusEditar(Onibus onibus) {
+		return controladorOnibus.editar(onibus);
 	}
-	
-	public Onibus onibusProcurar(Long numero){
+
+	public Onibus onibusProcurar(Long numero) {
 		return controladorOnibus.procurar(numero);
 	}
-	
-	public List<Onibus> onibusListar(){
+
+	public List<Onibus> onibusListar() {
 		return controladorOnibus.listar();
 	}
-	
-	public List<Onibus> onibusListar(String nomeCampo, boolean valorCampo){
-		return controladorOnibus.listar(nomeCampo,valorCampo);
+
+	public List<Onibus> onibusListar(String nomeCampo, boolean valorCampo) {
+		return controladorOnibus.listar(nomeCampo, valorCampo);
+	}
+
+	// TODO ITINERARIO
+
+	public String itinerarioCadastrar(Itinerario itinerario) {
+		return controladorItinerario.cadastrar(itinerario);
+	}
+
+	public String itinerarioRemover(Itinerario itinerario) {
+		return controladorItinerario.remover(itinerario);
+	}
+
+	public String itinerarioEditar(Itinerario itinerario) {
+		return controladorItinerario.editar(itinerario);
+	}
+
+	public Itinerario itinerarioProcurar(Long numero) {
+		return controladorItinerario.procurar(numero);
+	}
+
+	public List<Itinerario> itinerarioListar() {
+		return controladorItinerario.listar();
+	}
+
+	public List<Itinerario> itinerarioListar(String nomeCampo,
+			boolean valorCampo) {
+		return controladorItinerario.listar(nomeCampo, valorCampo);
 	}
 
 }

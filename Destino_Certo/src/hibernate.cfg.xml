@@ -16,5 +16,6 @@
 		<property name="hibernate.current_session_context_class">thread</property>
         <mapping class="br.com.destino_certo.usuario.modelo.Usuario"/>
         <mapping class="br.com.destino_certo.onibus.modelo.Onibus"/>
+        <mapping class="br.com.destino_certo.itinerario.modelo.Itinerario"/>
     </session-factory>
 </hibernate-configuration>
