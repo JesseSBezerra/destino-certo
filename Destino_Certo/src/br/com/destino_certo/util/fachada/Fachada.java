@@ -10,6 +10,10 @@ import br.com.destino_certo.onibus.controlador.ControladorOnibus;
 import br.com.destino_certo.onibus.modelo.IRepositorioOnibus;
 import br.com.destino_certo.onibus.modelo.Onibus;
 import br.com.destino_certo.onibus.modelo.RepositorioOnibus;
+import br.com.destino_certo.parada.controlador.ControladorParada;
+import br.com.destino_certo.parada.modelo.IRepositorioParada;
+import br.com.destino_certo.parada.modelo.Parada;
+import br.com.destino_certo.parada.modelo.RepositorioParada;
 import br.com.destino_certo.usuario.controlador.ControladorUsuario;
 import br.com.destino_certo.usuario.modelo.IRepositorioUsuario;
 import br.com.destino_certo.usuario.modelo.RepositorioUsuario;
@@ -24,6 +28,8 @@ public class Fachada {
 	private IRepositorioOnibus iRepositorioOnibus;
 	private ControladorItinerario controladorItinerario;
 	private IRepositorioItinerario iRepositorioItinerario;
+	private ControladorParada controladorParada;
+	private IRepositorioParada iRepositorioParada;
 
 	public static Fachada getInstance() {
 		if (instance == null) {
@@ -44,8 +50,9 @@ public class Fachada {
 		iRepositorioOnibus = new RepositorioOnibus();
 		controladorOnibus = new ControladorOnibus(iRepositorioOnibus);
 		iRepositorioItinerario = new RepositorioItinerario();
-		controladorItinerario = new ControladorItinerario(
-				iRepositorioItinerario);
+		controladorItinerario = new ControladorItinerario(iRepositorioItinerario);
+		iRepositorioParada = new RepositorioParada();
+		controladorParada = new ControladorParada(iRepositorioParada);
 	}
 
 	// TODO USUARIO
@@ -121,6 +128,33 @@ public class Fachada {
 	public List<Itinerario> itinerarioListar(String nomeCampo,
 			boolean valorCampo) {
 		return controladorItinerario.listar(nomeCampo, valorCampo);
+	}
+	
+	//TODO PARADA
+	
+	public String paradaCadastrar(Parada parada) {
+		return controladorParada.cadastrar(parada);
+	}
+
+	public String paradaRemover(Parada parada) {
+		return controladorParada.remover(parada);
+	}
+
+	public String paradaEditar(Parada parada) {
+		return controladorParada.editar(parada);
+	}
+
+	public Parada paradaProcurar(Long numero) {
+		return controladorParada.procurar(numero);
+	}
+
+	public List<Parada> paradaListar() {
+		return controladorParada.listar();
+	}
+
+	public List<Parada> paradaListar(String nomeCampo,
+			boolean valorCampo) {
+		return controladorParada.listar(nomeCampo, valorCampo);
 	}
 
 }
