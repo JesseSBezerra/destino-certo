@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+<h:body>
+<h:form>
+<p:growl id="growl" showDetail="true"></p:growl>
+<h:panelGrid columns="2" cellspacing="15px">
+<h:outputLabel value="Login"/>
+<h:outputLabel value="Senha"/>
+<h:inputText value="#{logarUsuarioMB.login}" required="true" requiredMessage="O campo login é de preenchimento obrigatório"/>
+<h:inputText value="#{logarUsuarioMB.senha}" required="true" requiredMessage="O campo senha é de preenchimento obrigatório"/>
+</h:panelGrid>
+<h:commandButton action="#{logarUsuarioMB.logar}" value="Autenticar">
+</h:commandButton>
+</h:form>
+</h:body>
+</html>
