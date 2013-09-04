@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+ <link rel="stylesheet" href="css/style_form.css"></link>
+ <link rel="stylesheet" href="css/style_fechamento.css"></link>
+ <link rel="stylesheet" href="css/style_form_duplicata.css"></link>
+</h:head>
+<h:body>
+<h:form id="form_cadastro">
+<p:growl id="growl" showDetail="true"></p:growl>
+<h:panelGrid columns="1">
+<h:outputLabel value="Onibus"/>
+<h:selectOneMenu styleClass="wh130" value="#{cadastarItinerarioMB.numeroOnibus}">
+<f:selectItem itemLabel=" .:Selecione:. "/>
+<f:selectItems var="onibus" value="#{cadastarItinerarioMB.lista}" itemLabel="#{onibus.nome}" itemValue="#{onibus.numero}"/>
+</h:selectOneMenu>
+
+<h:outputLabel value="Nome"/>
+<h:inputText styleClass="wh250" value="#{cadastarItinerarioMB.itinerario.nome}"></h:inputText>
+</h:panelGrid>
+<h:commandButton value="Cadastrar" actionListener="#{cadastarItinerarioMB.cadastrar}"></h:commandButton>
+</h:form>
+</h:body>
+</html>

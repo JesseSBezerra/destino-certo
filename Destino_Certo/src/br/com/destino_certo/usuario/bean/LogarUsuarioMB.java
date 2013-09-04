@@ -29,6 +29,8 @@ public class LogarUsuarioMB {
 			if(usuario.getSenha().equals(senha.trim())){
 				FacesContextUtil.setSessionAttribute("usuario", usuario);
 				FacesContextUtil.setNavegacao("usuario_cadastro");
+			}else{
+				FacesContextUtil.setMessageInformacao("Info", "login ou senha inválido");
 			}
 		}else{
 			FacesContextUtil.setMessageInformacao("Info", "login ou senha inválido");

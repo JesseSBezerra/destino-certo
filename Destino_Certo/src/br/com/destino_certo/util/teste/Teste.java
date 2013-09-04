@@ -7,6 +7,7 @@ import br.com.destino_certo.itinerario.modelo.RepositorioItinerario;
 import br.com.destino_certo.onibus.controlador.ControladorOnibus;
 import br.com.destino_certo.onibus.modelo.Onibus;
 import br.com.destino_certo.onibus.modelo.RepositorioOnibus;
+import br.com.destino_certo.parada.modelo.Parada;
 import br.com.destino_certo.usuario.modelo.Usuario;
 import br.com.destino_certo.util.fachada.Fachada;
 
@@ -36,6 +37,7 @@ public class Teste {
 //	    System.out.println(controladorUsuario.listar().size());
 //	Fachada fachada = Fachada.getInstance();
 //	 System.out.println(fachada.usuarioRemover(usuario));
+	    Parada parada = new Parada();
 	    ControladorOnibus controladorOnibus = new ControladorOnibus(new RepositorioOnibus());
 	    ControladorItinerario controladorItinerario = new ControladorItinerario(new RepositorioItinerario());
 //	    onibus.setAtivo(true);
