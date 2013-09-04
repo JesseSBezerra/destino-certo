@@ -12,16 +12,31 @@
 
 </h:head>
 <h:body>
-<h:form>
-<p:growl id="growl" showDetail="true"></p:growl>
-<h:panelGrid columns="2" cellspacing="15px">
-<h:outputLabel value="Login"/>
-<h:outputLabel value="Senha"/>
-<h:inputText value="#{logarUsuarioMB.login}" required="true" requiredMessage="O campo login é de preenchimento obrigatório"/>
-<h:inputText value="#{logarUsuarioMB.senha}" required="true" requiredMessage="O campo senha é de preenchimento obrigatório"/>
-</h:panelGrid>
-<h:commandButton action="#{logarUsuarioMB.logar}" value="Autenticar">
-</h:commandButton>
-</h:form>
+	<h:outputStylesheet library="css" name="default.css" />
+
+	<div class="formulario">
+		<p>
+			<img src="resources/images/logo.png" alt="Logomarca" width="300" />
+		</p>
+		<p>&nbsp;</p>
+		<h:form>
+			<p:growl id="growl" showDetail="true"></p:growl>
+			<h:panelGrid columns="2" cellspacing="15px">
+				<h:outputLabel value="Login" />
+				<h:inputText value="#{logarUsuarioMB.login}" required="true"
+					requiredMessage="O campo login é de preenchimento obrigatório"
+					style="height: 25px; font-size: 14px; padding-left: 5px;" />
+				<h:outputLabel value="Senha" />
+				<h:inputText value="#{logarUsuarioMB.senha}" required="true"
+					requiredMessage="O campo senha é de preenchimento obrigatório"
+					style="height: 25px; font-size: 14px; padding-left: 5px;" />
+			</h:panelGrid>
+			<h:commandButton action="#{logarUsuarioMB.logar}"
+				value=" Autenticar "
+				style="padding: 2px; margin-left:36%; font-family: Arial; font-size:14px; ">
+			</h:commandButton>
+		</h:form>
+		<p>&nbsp;</p>
+	</div>
 </h:body>
 </html>

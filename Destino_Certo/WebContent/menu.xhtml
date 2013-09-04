@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+<h:body>
+	<h:outputStylesheet library="css" name="default.css" />
+
+	<div class="menu">
+		<p:menubar style="font-size:11px; border:none;">
+
+			<p:menuitem value="Início " url="#" icon="ui-icon-home" />
+
+			<p:submenu label="Reservas" icon="ui-icon-contact">
+
+
+				<p:submenu label="Reserva de Ambiente">
+					<p:menuitem value="Nova" url="#" icon="ui-icon-plus" />
+					<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+				</p:submenu>
+
+				<p:submenu label="Reserva de Equipamento">
+					<p:menuitem value="Nova" url="#" icon="ui-icon-plus" />
+					<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+				</p:submenu>
+
+			</p:submenu>
+			<p:submenu label="Cadastros " icon="ui-icon-document">
+
+				<p:submenu label="Usuarios">
+					<p:menuitem value="Novo" url="/administrador/usuario/cadastro.jsf"
+						icon="ui-icon-plus" />
+					<p:menuitem value="Listagem" url="#" />
+				</p:submenu>
+
+				<p:submenu label="Cursos">
+					<p:menuitem value="Novo" url="/administrador/curso/cadastro.jsf"
+						icon="ui-icon-plus" />
+					<p:menuitem value="Listagem" url="#" />
+				</p:submenu>
+
+				<p:submenu label="Equipamentos">
+					<p:menuitem value="Novo" url="#" />
+						<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+				</p:submenu>
+
+				<p:submenu label="Equipamentos Para Cursos">
+					<p:menuitem value="Novo" url="#" icon="ui-icon-plus" />
+					<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+				</p:submenu>
+
+				<p:submenu label="Bloco">
+					<p:menuitem value="Novo" url="/administrador/bloco/cadastro.jsf"
+						icon="ui-icon-plus" />
+					<p:menuitem value="Listagem" url="#" />
+				</p:submenu>
+
+				<p:submenu label="Ambiente">
+					<p:menuitem value="Novo" url="/administrador/ambiente/cadastro.jsf"
+						icon="ui-icon-plus" />
+					<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+				</p:submenu>
+
+				<p:submenu label="Tipos de Ambiente">
+					<p:menuitem value="Novo"
+						url="/administrador/tipoambiente/cadastro.jsf" icon="ui-icon-plus" />
+					<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+				</p:submenu>
+
+			</p:submenu>
+
+			<p:submenu label="Relatórios" icon="ui-icon-signal">
+
+				<p:submenu label="Relat. Reservas de Ambientes">
+					<p:menuitem value="Por Professor" url="#" icon="ui-icon-plus" />
+
+					<p:menuitem value="Por Professor e Data" url="#"
+						icon="ui-icon-plus" />
+				</p:submenu>
+
+				<p:submenu label="Relat. Reservas de equipamentos">
+					<p:menuitem value="Por Professor" url="#" icon="ui-icon-plus" />
+
+					<p:menuitem value="Por Professor e Data" url="#"
+						icon="ui-icon-plus" />
+				</p:submenu>
+			</p:submenu>
+
+			<p:menuitem value="Sobre " url="/administrador/sobre.jsf"
+				icon="ui-icon-notice" />
+
+			<p:menuitem value="Sair "
+				actionListener="#{sessaoMB.destruir_sessao_encaminhar}" url="#" />
+
+
+		</p:menubar>
+	</div>
+</h:body>
+</html>
