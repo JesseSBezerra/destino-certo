@@ -17,5 +17,6 @@
 		<mapping class="br.com.destino_certo.usuario.modelo.Usuario"/>
         <mapping class="br.com.destino_certo.onibus.modelo.Onibus"/>
         <mapping class="br.com.destino_certo.itinerario.modelo.Itinerario"/>
+        <mapping class="br.com.destino_certo.parada.modelo.Parada"/>
 	</session-factory>
 </hibernate-configuration>
