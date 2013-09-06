@@ -11,4 +11,5 @@ public void remover(Parada parada) throws ParadaNaoEncontradaException;
 public Parada procurar(Long numero) throws ParadaNaoEncontradaException;
 public List<Parada> listar();
 public List<Parada> listar(String nomeCampo, boolean valorCampo);
+public List<Parada> listar(String nomeCampo, Long valorCampo);
 }

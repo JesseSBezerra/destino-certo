@@ -3,8 +3,10 @@ package br.com.destino_certo.itinerario.modelo;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -41,9 +43,6 @@ public class Itinerario implements Serializable {
 	@ManyToOne(optional=true)
 	@JoinColumn
 	private Onibus onibus;
-	
-	@ManyToMany
-	private List<Parada> lista;
 
 	public Long getNumero() {
 		return numero;
@@ -76,16 +75,6 @@ public class Itinerario implements Serializable {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-
-	public List<Parada> getLista() {
-		return lista;
-	}
-
-	public void setLista(List<Parada> lista) {
-		this.lista = lista;
-	}
-	
-	
-	
+		
 
 }

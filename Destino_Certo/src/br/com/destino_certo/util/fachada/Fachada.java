@@ -156,5 +156,10 @@ public class Fachada {
 			boolean valorCampo) {
 		return controladorParada.listar(nomeCampo, valorCampo);
 	}
+	
+	public List<Parada> paradaListar(String nomeCampo,
+			Long valorCampo) {
+		return controladorParada.listar(nomeCampo, valorCampo);
+	}
 
 }

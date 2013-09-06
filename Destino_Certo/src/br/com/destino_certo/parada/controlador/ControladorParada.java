@@ -89,6 +89,10 @@ public class ControladorParada implements Serializable {
 		return iRepositorioParada.listar(nomeCampo,valorCampo);
 	}
 	
+	public List<Parada> listar(String nomeCampo,Long valorCampo){
+		return iRepositorioParada.listar(nomeCampo,valorCampo);
+	}
+	
 	private boolean existe(Parada parada){
 		boolean jaCadastrado = false;
 		try {

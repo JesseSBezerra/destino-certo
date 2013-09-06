@@ -1,6 +1,7 @@
 package br.com.destino_certo.parada.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -47,12 +48,12 @@ public class CadastrarParadaMB implements Serializable {
 	 
 	 public void selecionarItinerario(){
 		 itinerario = fachada.itinerarioProcurar(idItinerario);
+		 System.out.println(itinerario.getNome());
 	 }
 	 
 	 public void gravar() {
-	        fachada.paradaCadastrar(parada);
-	        itinerario.getLista().add(parada);
-	        fachada.itinerarioEditar(itinerario);
+	        parada.setItinerario(itinerario);
+		    fachada.paradaCadastrar(parada);
 	        parada = new Parada();
 	        carregarLocais();
 	    }
@@ -61,11 +62,19 @@ public class CadastrarParadaMB implements Serializable {
 		return listaItinerarios;
 	}
 	
-	
+	public List<Parada> listaParada(){
+		List<Parada> listaP;
+		if(itinerario==null){
+			listaP = new ArrayList<Parada>();
+		}else{
+			listaP = fachada.paradaListar("itinerario.numero", itinerario.getNumero());
+		}
+		return listaP;
+	}
+		
 	private void carregarLocais() {
         mapa = new DefaultMapModel();
- 
-        List<Parada> locaisList = fachada.paradaListar();
+        List<Parada> locaisList = listaParada();
         for (Parada pa : locaisList) {
             mapa.addOverlay(
                     new Marker(

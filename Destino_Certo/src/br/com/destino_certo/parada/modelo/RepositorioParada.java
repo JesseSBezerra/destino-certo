@@ -101,4 +101,14 @@ public class RepositorioParada implements IRepositorioParada {
 		c.add(Restrictions.eq(nomeCampo, valorCampo));
 		return c.list();
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Parada> listar(String nomeCampo, Long valorCampo) {
+		// TODO Auto-generated method stub
+		iniciarTransacao();
+		Criteria c = s.createCriteria(Parada.class);
+		c.add(Restrictions.eq(nomeCampo, valorCampo));
+		return c.list();
+	}
 }
