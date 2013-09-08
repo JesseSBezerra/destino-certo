@@ -28,7 +28,7 @@ public class LogarUsuarioMB {
 			System.out.println(usuario.getNome());
 			if(usuario.getSenha().equals(senha.trim())){
 				FacesContextUtil.setSessionAttribute("usuario", usuario);
-				FacesContextUtil.setNavegacao("usuario_cadastro");
+				FacesContextUtil.setNavegacao("home");
 			}else{
 				FacesContextUtil.setMessageInformacao("Info", "login ou senha inválido");
 			}
@@ -51,8 +51,5 @@ public class LogarUsuarioMB {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-	
-	
-	
+	}	
 }

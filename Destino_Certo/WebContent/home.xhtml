@@ -9,11 +9,11 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<link rel="stylesheet" href="css/style_form.css"></link>
-	<link rel="stylesheet" href="css/style_fechamento.css"></link>
-	<link rel="stylesheet" href="css/style_form_duplicata.css"></link>
+
 </h:head>
 <h:body>
+
+	<h:outputStylesheet library="css" name="default.css" />
 
 	<div class="limitar">
 		<div class="menu">
@@ -51,40 +51,11 @@
 			</p:menubar>
 		</div>
 	</div>
-
 	<div class="limitar">
 
-		<p>&nbsp;</p>
-		<h1 align="center">Cadastro de Itinerário</h1>
-		<p>&nbsp;</p>
-
-
-
-		<div
-			style="border-radius: 5px; border: 2px solid; padding: 40px; background: white; width: 300px;">
-			<h:outputStylesheet library="css" name="default.css" />
-			<h:form id="form_cadastro">
-				<p:growl id="growl" showDetail="true"></p:growl>
-				<h:panelGrid columns="1">
-					<h:outputLabel value="Onibus" style="font-size:20px"/>
-					<h:selectOneMenu style="font-size:16px"
-						value="#{cadastarItinerarioMB.numeroOnibus}">
-						<f:selectItem itemLabel=" .:Selecione:. " />
-						<f:selectItems var="onibus" value="#{cadastarItinerarioMB.lista}"
-							itemLabel="#{onibus.nome}" itemValue="#{onibus.numero}" />
-					</h:selectOneMenu>
-
-					<h:outputLabel value="Nome" style="font-size:20px"/>
-					<h:inputText styleClass="wh250"
-						value="#{cadastarItinerarioMB.itinerario.nome}" style="font-size:16px"></h:inputText>
-				</h:panelGrid>
-				<h:commandButton value="Cadastrar"
-					actionListener="#{cadastarItinerarioMB.cadastrar}" style="width:100px; height:40px; font-size:16px ; float:right; margin-right: 19px;"></h:commandButton>
-			</h:form>
-			<p>&nbsp;</p>
-			<p>&nbsp;</p>
+		<div style="background: white; padding: 25px; text-align: center;">
+			<img src="resources/images/logo.png" alt="Logomarca" />
 		</div>
-		
 	</div>
 </h:body>
 </html>
