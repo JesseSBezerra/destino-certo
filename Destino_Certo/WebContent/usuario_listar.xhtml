@@ -9,93 +9,130 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-<link rel="stylesheet" href="css/style_form.css"></link>
+	<link rel="stylesheet" href="css/style_form.css"></link>
 	<link rel="stylesheet" href="css/style_fechamento.css"></link>
 	<link rel="stylesheet" href="css/style_form_duplicata.css"></link>
 </h:head>
 <h:body>
-<h:form id="form_cadastro">
-					<p:growl showDetail="true"></p:growl>
-					<p:dataTable var="usuario"
-						value="#{listarUsuarioMB.lista}"
-						rowKey="#{usuario}" paginator="true" rows="10"
-						
-						filteredValue="#{listarUsuarioMB.listaSelecionada}"
-						id="usuarioTable">
+
+	<h:outputStylesheet library="css" name="default.css" />
+
+	<div class="limitar">
+		<div class="menu">
+			<p:menubar style="font-size:11px; border:none;">
+
+				<p:menuitem value="Início " url="#" icon="ui-icon-home" />
+
+				<p:submenu label="Cadastro " icon="ui-icon-document">
+
+					<p:submenu label="Usuarios">
+						<p:menuitem value="Novo" url="#" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+					</p:submenu>
+
+					<p:submenu label="Itinerario">
+						<p:menuitem value="Novo" url="#" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+					</p:submenu>
+
+					<p:submenu label="ônibus">
+						<p:menuitem value="Novo" url="#" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+					</p:submenu>
+
+					<p:submenu label="Parada">
+						<p:menuitem value="Novo" url="#" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+					</p:submenu>
+
+				</p:submenu>
+
+				<p:menuitem value="Sair "
+					actionListener="#{sessaoMB.destruir_sessao_encaminhar}" url="#" />
 
 
-						<f:facet name="header">
+			</p:menubar>
+		</div>
+	</div>
+	
+	<div class="limitar">
+
+	<h:form id="form_cadastro">
+		<p:growl showDetail="true"></p:growl>
+		<p:dataTable var="usuario" value="#{listarUsuarioMB.lista}"
+			rowKey="#{usuario}" paginator="true" rows="10"
+			filteredValue="#{listarUsuarioMB.listaSelecionada}" id="usuarioTable">
+
+
+			<f:facet name="header">
             Lista de Usuarios
         </f:facet>
 
-						<p:column headerText="Nome"
-							sortBy="#{usuario.nome}"
-							filterBy="#{usuario.nome}"
-							id="cpf">
+			<p:column headerText="Nome" sortBy="#{usuario.nome}"
+				filterBy="#{usuario.nome}" id="cpf">
             #{usuario.nome}
         </p:column>
 
-						<p:column headerText="Email"
-							sortBy="#{usuario.email}"
-							filterBy="#{usuario.email}"
-							id="year">
+			<p:column headerText="Email" sortBy="#{usuario.email}"
+				filterBy="#{usuario.email}" id="year">
             #{usuario.email}
         </p:column>
-        
-        <p:column headerText="Login"
-							sortBy="#{usuario.login}"
-							filterBy="#{usuario.login}"
-							id="login">
+
+			<p:column headerText="Login" sortBy="#{usuario.login}"
+				filterBy="#{usuario.login}" id="login">
             #{usuario.login}
         </p:column>
-        
-            <p:column headerText="Opções">
-					<p:commandButton icon="ui-icon-search"
-						actionListener="#{listarUsuarioMB.selecionar(usuario)}"
-						update=":form_duplica" onclick="dlg2.show();"></p:commandButton>
-				</p:column>
 
-						
-					</p:dataTable>
+			<p:column headerText="Opções">
+				<p:commandButton icon="ui-icon-search"
+					actionListener="#{listarUsuarioMB.selecionar(usuario)}"
+					update=":form_duplica" onclick="dlg2.show();"></p:commandButton>
+			</p:column>
 
 
-				</h:form>
-				
-			<p:dialog id="modalDialog" header="Detalhes e opções do Usuário"
-			widgetVar="dlg2" modal="true" height="250" resizable="false"
-			width="500">
-			<h:form styleClass="form_duplicata" id="form_duplica">
-            			<p:commandButton
-            			actionListener="#{listarUsuarioMB.editar}"
-					update=":form_cadastro :form_duplica"
-					style="float:right;
+		</p:dataTable>
+
+
+	</h:form>
+
+	<p:dialog id="modalDialog" header="Detalhes e opções do Usuário"
+		widgetVar="dlg2" modal="true" height="250" resizable="false"
+		width="500">
+		<h:form styleClass="form_duplicata" id="form_duplica">
+			<p:commandButton actionListener="#{listarUsuarioMB.editar}"
+				update=":form_cadastro :form_duplica"
+				style="float:right;
 	margin-top: -25px; margin-right: -30px;width:50px;height:50px;"
-					icon="ui-icon-check" ></p:commandButton>
+				icon="ui-icon-check"></p:commandButton>
 
-				<p:commandButton
-					actionListener="#{listarUsuarioMB.remover}"
-					update=":form_cadastro :form_duplica"
-					style="float:right;
+			<p:commandButton actionListener="#{listarUsuarioMB.remover}"
+				update=":form_cadastro :form_duplica"
+				style="float:right;
 	margin-top: -25px; margin-right: -110px;width:50px;height:50px;"
-					icon="ui-icon-trash" ></p:commandButton>
-            <h:outputLabel value="Nome"/>
-            <br></br>
-            <h:inputText styleClass="wh230" value="#{listarUsuarioMB.usuario.nome}"></h:inputText>
-            <br></br>
-            <h:outputLabel value="Email"/>
-            <br></br>
-            <h:inputText styleClass="wh230" value="#{listarUsuarioMB.usuario.email}"></h:inputText>
-            <br></br>
-            <h:panelGrid columns="2">
-            <h:outputLabel value="Login" styleClass="wh150"/>
-            <h:outputLabel value="Senha" styleClass="wh150"/>
-            <h:inputText styleClass="wh150" readonly="true" value="#{listarUsuarioMB.usuario.login}"/>
-            <h:inputText styleClass="wh150"  value="#{listarUsuarioMB.usuario.senha}"/>
+				icon="ui-icon-trash"></p:commandButton>
+			<h:outputLabel value="Nome" />
+			<br></br>
+			<h:inputText styleClass="wh230"
+				value="#{listarUsuarioMB.usuario.nome}"></h:inputText>
+			<br></br>
+			<h:outputLabel value="Email" />
+			<br></br>
+			<h:inputText styleClass="wh230"
+				value="#{listarUsuarioMB.usuario.email}"></h:inputText>
+			<br></br>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Login" styleClass="wh150" />
+				<h:outputLabel value="Senha" styleClass="wh150" />
+				<h:inputText styleClass="wh150" readonly="true"
+					value="#{listarUsuarioMB.usuario.login}" />
+				<h:inputText styleClass="wh150"
+					value="#{listarUsuarioMB.usuario.senha}" />
 			</h:panelGrid>
-						
 
-			</h:form>
 
-		</p:dialog>
+		</h:form>
+
+	</p:dialog>
+	</div>
 </h:body>
 </html>

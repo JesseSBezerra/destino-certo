@@ -11,7 +11,44 @@
 <h:body>
 
 	<h:outputStylesheet library="css" name="default.css" />
+<div class="limitar">
+		<div class="menu">
+			<p:menubar style="font-size:11px; border:none;">
 
+				<p:menuitem value="Início " url="#" icon="ui-icon-home" />
+
+				<p:submenu label="Cadastro " icon="ui-icon-document">
+
+					<p:submenu label="Usuarios">
+						<p:menuitem value="Novo" url="#" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+					</p:submenu>
+
+					<p:submenu label="Itinerario">
+						<p:menuitem value="Novo" url="#" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+					</p:submenu>
+
+					<p:submenu label="ônibus">
+						<p:menuitem value="Novo" url="#" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+					</p:submenu>
+
+					<p:submenu label="Parada">
+						<p:menuitem value="Novo" url="#" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+					</p:submenu>
+
+				</p:submenu>
+
+				<p:menuitem value="Sair "
+					actionListener="#{sessaoMB.destruir_sessao_encaminhar}" url="#" />
+
+
+			</p:menubar>
+		</div>
+	</div>
+	
 	<div class="limitar">
 
 		<div class="painel_esquerdo">
@@ -35,7 +72,7 @@
 		<div class="painel_direito">
 			<p:gmap id="mapa" center="-8.126106,-34.92289" zoom="14"
 				model="#{cadastrarParadaMB.locais}" onPointClick="dlgLocal.show()"
-				type="ROADMAP" style="width:800px;height:600px">
+				type="ROADMAP" style="width:750px;height:600px">
 				<p:ajax event="pointSelect" listener="#{cadastrarParadaMB.novo}"
 					update="formLocal" />
 			</p:gmap>

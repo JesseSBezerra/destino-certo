@@ -12,21 +12,78 @@
 
 </h:head>
 <h:body>
-<h:form>
-<h:panelGrid columns="2">
-<h:outputText value="Nome"/>
-<h:outputText value="Email"/>
-<h:inputText value="#{cadastrarUsuarioMB.usuario.nome}"/>
-<h:inputText value="#{cadastrarUsuarioMB.usuario.email}"/>
 
-<h:outputText value="Login"/>
-<h:outputText value="Senha"/>
-<h:inputText value="#{cadastrarUsuarioMB.usuario.login}"/>
-<h:inputText value="#{cadastrarUsuarioMB.usuario.senha}"/>
+	<h:outputStylesheet library="css" name="default.css" />
 
-</h:panelGrid>
+	<div class="limitar">
+		<div class="menu">
+			<p:menubar style="font-size:11px; border:none;">
 
-<h:commandButton actionListener="#{cadastrarUsuarioMB.cadastrarUsuario}" value="Cadastrar"/>
-</h:form>
+				<p:menuitem value="Início " url="#" icon="ui-icon-home" />
+
+				<p:submenu label="Cadastro " icon="ui-icon-document">
+
+					<p:submenu label="Usuarios">
+						<p:menuitem value="Novo" url="#" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+					</p:submenu>
+
+					<p:submenu label="Itinerario">
+						<p:menuitem value="Novo" url="#" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+					</p:submenu>
+
+					<p:submenu label="ônibus">
+						<p:menuitem value="Novo" url="#" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+					</p:submenu>
+
+					<p:submenu label="Parada">
+						<p:menuitem value="Novo" url="#" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+					</p:submenu>
+
+				</p:submenu>
+
+				<p:menuitem value="Sair "
+					actionListener="#{sessaoMB.destruir_sessao_encaminhar}" url="#" />
+
+
+			</p:menubar>
+		</div>
+	</div>
+	<div class="limitar">
+
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<h1 align="center">Cadastro de Usuários</h1>
+
+		<div id="cadUsuario">
+			<p>&nbsp;</p>
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:outputText value="Nome &nbsp;" />
+					<h:inputText value="#{cadastrarUsuarioMB.usuario.nome}" />
+					<h:outputText value="Email &nbsp;" />
+					<h:inputText value="#{cadastrarUsuarioMB.usuario.email}" />
+
+					<h:outputText value="Login &nbsp;" />
+					<h:inputText value="#{cadastrarUsuarioMB.usuario.login}" />
+					<h:outputText value="Senha &nbsp;" />
+					<h:inputSecret value="#{cadastrarUsuarioMB.usuario.senha}" />
+
+				</h:panelGrid>
+
+				<h:commandButton
+					actionListener="#{cadastrarUsuarioMB.cadastrarUsuario}"
+					value="Cadastrar"
+					style="width:100px; height: 30px; font-family: arial; font-weight: bold; float:right; margin-right: 43px;" />
+
+			</h:form>
+
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+		</div>
+	</div>
 </h:body>
 </html>

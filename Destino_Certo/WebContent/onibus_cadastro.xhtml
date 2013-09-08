@@ -9,22 +9,79 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <link rel="stylesheet" href="css/style_form.css"></link>
+	<link rel="stylesheet" href="css/style_form.css"></link>
 	<link rel="stylesheet" href="css/style_fechamento.css"></link>
 	<link rel="stylesheet" href="css/style_form_duplicata.css"></link>
 </h:head>
 <h:body>
-<p:growl id="growl" showDetail="true"></p:growl>
-<h:form styleClass="form_duplicata" id="form_duplica">
-<h:outputLabel value="Numero"/>
-<br></br>
-<h:inputText styleClass="wh150" value="#{cadastrarOnibusMB.onibus.numero}"/>
-<br></br>
-<h:outputLabel value="Nome"/>
-<br></br>
-<h:inputText styleClass="wh150" value="#{cadastrarOnibusMB.onibus.nome}"/>
-<br></br>
-<h:commandButton actionListener="#{cadastrarOnibusMB.cadastrar}" value="cadastrar"></h:commandButton>
-</h:form>
+
+	<h:outputStylesheet library="css" name="default.css" />
+
+	<div class="limitar">
+		<div class="menu">
+			<p:menubar style="font-size:11px; border:none;">
+
+				<p:menuitem value="Início " url="#" icon="ui-icon-home" />
+
+				<p:submenu label="Cadastro " icon="ui-icon-document">
+
+					<p:submenu label="Usuarios">
+						<p:menuitem value="Novo" url="#" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+					</p:submenu>
+
+					<p:submenu label="Itinerario">
+						<p:menuitem value="Novo" url="#" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+					</p:submenu>
+
+					<p:submenu label="ônibus">
+						<p:menuitem value="Novo" url="#" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+					</p:submenu>
+
+					<p:submenu label="Parada">
+						<p:menuitem value="Novo" url="#" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="#" icon="ui-icon-clipboard" />
+					</p:submenu>
+
+				</p:submenu>
+
+				<p:menuitem value="Sair "
+					actionListener="#{sessaoMB.destruir_sessao_encaminhar}" url="#" />
+
+
+			</p:menubar>
+		</div>
+	</div>
+
+	<div class="limitar">
+
+		<p:growl id="growl" showDetail="true"></p:growl>
+
+
+		<p>&nbsp;</p>
+		<h1 align="center">Cadastro de Ônibus</h1>
+		<p>&nbsp;</p>
+		
+		<div
+			style="border-radius: 5px; border: 2px solid; padding: 40px; background: white; width: 300px; ">
+			<h:form>
+				<h:outputLabel value="Numero" style="font-size:20px" />
+				<br></br>
+				<h:inputText styleClass="wh150"
+					value="#{cadastrarOnibusMB.onibus.numero}" style="width:300px;" />
+				<br></br>
+				<h:outputLabel value="Nome" style="font-size:20px"/>
+				<br></br>
+				<h:inputText styleClass="wh150"
+					value="#{cadastrarOnibusMB.onibus.nome}" style="width:300px;" />
+				<br></br>
+				<h:commandButton actionListener="#{cadastrarOnibusMB.cadastrar}"
+					value="Cadastrar" style="width:100px; height:40px; font-size:16px "></h:commandButton>
+			</h:form>
+		</div>
+	</div>
+
 </h:body>
 </html>
