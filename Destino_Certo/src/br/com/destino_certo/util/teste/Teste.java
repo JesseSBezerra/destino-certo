@@ -26,6 +26,9 @@ public class Teste {
     
     list = fachada.paradaListar("itinerario.numero", 8715L);
     System.out.println(list.size());
+    
+    Parada parada = fachada.paradaProcurar(8714L,2);
+    System.out.println(parada.getNome());
 	}
 
 }

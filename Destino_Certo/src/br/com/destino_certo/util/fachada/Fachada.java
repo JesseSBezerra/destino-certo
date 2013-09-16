@@ -147,6 +147,10 @@ public class Fachada {
 	public Parada paradaProcurar(Long numero) {
 		return controladorParada.procurar(numero);
 	}
+	
+	public Parada paradaProcurar(Long numeroIti,Integer ordemParada) {
+		return controladorParada.procurar(numeroIti,ordemParada);
+	}
 
 	public List<Parada> paradaListar() {
 		return controladorParada.listar();

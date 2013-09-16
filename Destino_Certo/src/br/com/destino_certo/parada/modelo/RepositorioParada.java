@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import br.com.destino_certo.util.hibernate.HibernateUtil;
@@ -84,7 +85,9 @@ public class RepositorioParada implements IRepositorioParada {
 	public List<Parada> listar() {
 		// TODO Auto-generated method stub
 		iniciarTransacao();
-		return s.createCriteria(Parada.class).list();
+		Criteria c = s.createCriteria(Parada.class);
+		c.addOrder(Order.asc("itinerario.numero"));
+		return c.list();
 	}
 
 	private void iniciarTransacao() {
@@ -110,5 +113,18 @@ public class RepositorioParada implements IRepositorioParada {
 		Criteria c = s.createCriteria(Parada.class);
 		c.add(Restrictions.eq(nomeCampo, valorCampo));
 		return c.list();
+	}
+
+	@Override
+	public Parada procurar(String nomeCampo, Long valorCampo,
+			String nomeCampo0, Integer valorCampo0)
+			throws ParadaNaoEncontradaException {
+		iniciarTransacao();
+		Criteria c = s.createCriteria(Parada.class);
+		c.add(Restrictions.eq(nomeCampo, valorCampo));
+		c.add(Restrictions.eq(nomeCampo0, valorCampo0));
+		// TODO Auto-generated method stub
+		Parada parada = (Parada) c.uniqueResult();
+		return parada;
 	}
 }

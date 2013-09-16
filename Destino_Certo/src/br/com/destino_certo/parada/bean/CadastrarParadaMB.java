@@ -15,6 +15,7 @@ import org.primefaces.model.map.Marker;
 
 import br.com.destino_certo.itinerario.modelo.Itinerario;
 import br.com.destino_certo.parada.modelo.Parada;
+import br.com.destino_certo.util.autenticar.FacesContextUtil;
 import br.com.destino_certo.util.fachada.Fachada;
 
 @ManagedBean
@@ -53,7 +54,8 @@ public class CadastrarParadaMB implements Serializable {
 	 
 	 public void gravar() {
 	        parada.setItinerario(itinerario);
-		    fachada.paradaCadastrar(parada);
+//		    System.out.println(fachada.paradaCadastrar(parada));
+		    FacesContextUtil.setMessageInformacao("Info", fachada.paradaCadastrar(parada));
 	        parada = new Parada();
 	        carregarLocais();
 	    }

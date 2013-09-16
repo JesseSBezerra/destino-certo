@@ -40,7 +40,7 @@ public class Parada implements Serializable {
     private double longitude;
 	
 	@Column(name="ordem")
-	private int ordem;
+	private Integer ordem;
 	
 	@ManyToOne(optional = true, fetch = FetchType.LAZY)
 	@JoinColumn(name = "itinerario")
@@ -62,11 +62,11 @@ public class Parada implements Serializable {
 		this.nome = nome;
 	}
 
-	public int getOrdem() {
+	public Integer getOrdem() {
 		return ordem;
 	}
 
-	public void setOrdem(int ordem) {
+	public void setOrdem(Integer ordem) {
 		this.ordem = ordem;
 	}
 
