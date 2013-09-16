@@ -66,6 +66,20 @@ public class DestinoCertoMB {
 		return listaP;
 	}
 	
+	public List<Parada> atualizarParadas(List<Parada> lista){
+		List<Parada> listaParada = new ArrayList<Parada>();
+		for(Parada parada:lista){
+			if(!parada.getNome().toLowerCase().equals("contorno")){
+				listaParada.add(parada);
+				polylineModel.addOverlay(
+	                    new Marker(
+	                    new LatLng(parada.getLatitude(), parada.getLongitude()),
+	                    parada.getNome()));
+			}
+		}
+		return listaParada;
+	}
+	
 	private void carregarLocais() {
         polylineModel = new DefaultMapModel();
         Polyline polyline = new Polyline();
@@ -74,7 +88,7 @@ public class DestinoCertoMB {
             LatLng coordenada = new LatLng(pa.getLatitude(), pa.getLongitude());
             polyline.getPaths().add(coordenada);
         }
-        listaParada2 = locaisList;
+        listaParada2 = atualizarParadas(locaisList);
         posicao = polyline.getPaths().get(1).getLat() +" , "+polyline.getPaths().get(1).getLng();
         polyline.setStrokeWeight(3);
 		polyline.setStrokeColor("#FF9900");
