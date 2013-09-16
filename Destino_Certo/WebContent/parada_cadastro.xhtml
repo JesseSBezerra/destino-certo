@@ -47,7 +47,7 @@
 			</p:menubar>
 		</div>
 	</div>
-	
+	<p:growl id="mensagem" showDetail="true" showSummary="false"></p:growl>
 	<div class="limitar">
 
 		<div class="painel_esquerdo">
@@ -59,7 +59,7 @@
 						<f:selectItem itemLabel=" .:Selecione:. " />
 						<f:selectItems var="itinerario"
 							value="#{cadastrarParadaMB.listaItinerarios}"
-							itemLabel="#{itinerario.nome}" itemValue="#{itinerario.numero}" />
+							itemLabel="#{itinerario.numero}" itemValue="#{itinerario.numero}" />
 					</h:selectOneMenu>
 					<h:commandButton
 						actionListener="#{cadastrarParadaMB.selecionarItinerario}"
@@ -87,7 +87,7 @@
 					</h:panelGrid>
 					<p:commandButton value="Gravar"
 						actionListener="#{cadastrarParadaMB.gravar()}"
-						oncomplete="dlgLocal.hide()" update=":mapa" />
+						oncomplete="dlgLocal.hide()" update=":mapa :mensagem" />
 				</h:form>
 			</p:dialog>
 		</div>

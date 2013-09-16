@@ -1,22 +1,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true" />
-        <title>GMap</title>
-    </h:head>
-    <p:gmap id="mapa" center="-8.126106,-34.92289" zoom="14" model="#{localBean.locais}" onPointClick="dlgLocal.show()" type="ROADMAP" style="width:800px;height:600px">
-            <p:ajax event="pointSelect" listener="#{localBean.novo}" update="formLocal" />
-        </p:gmap>
- 
-        <p:dialog widgetVar="dlgLocal">  
-            <h:form id="formLocal">  
-                <p:focus for="desc" />
-                <h:panelGrid columns="2" style="width: 100%">
-                    <h:outputLabel for="desc" value="Descrição:" />  
-                    <p:inputText id="desc" value="#{localBean.local.descricao}" /> 
-                </h:panelGrid>
-                        <p:commandButton value="Gravar" actionListener="#{localBean.gravar()}" oncomplete="dlgLocal.hide()" update=":mapa" />
-            </h:form>  
-        </p:dialog>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<script type="text/javascript"
+		src="http://maps.google.com/maps/api/js?sensor=true" />
+		 <link href="css/style_teste.css" rel="stylesheet" type="text/css" />
+	<title>GMap</title>
+</h:head>
+<h:body>
+	<p:gmap id="mapa" center="-8.126106,-34.92289" zoom="14"
+		model="#{localBean.locais}" onPointClick="dlgLocal.show()"
+		type="ROADMAP" style="width:800px;height:600px">
+		<p:ajax event="pointSelect" listener="#{localBean.novo}"
+			update="formLocal" />
+	</p:gmap>
+
+	<p:dialog widgetVar="dlgLocal">
+		<h:form id="formLocal">
+			<p:focus for="desc" />
+			<h:panelGrid columns="2" style="width:100%">
+				<h:outputLabel for="desc" value="Descrição:" />
+				<p:inputText id="desc" value="#{localBean.local.descricao}" />
+			</h:panelGrid>
+			<p:commandButton value="Gravar"
+				actionListener="#{localBean.gravar()}" oncomplete="dlgLocal.hide()"
+				update=":mapa" />
+		</h:form>
+	</p:dialog>
+
+	<div class="painel_direito">
+	<h:form>
+   <h:outputText value="Intinerário"/>
+   
+      
+	</h:form>
+</div>
+</h:body>
 </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+<h:body>
+<h:form>
+<p:dataTable var="parada" value="#{listarParadaMB.listaParadas}"
+				rowKey="#{parada}" paginator="true" rows="10"
+				selection="#{listarParadaMB.parada}"
+				selectionMode="single"
+				filteredValue="#{listarParadaMB.listaSelecionada}"
+				id="listaParadas">
+
+
+				<f:facet name="header">
+            Lista de Fornecedores
+        </f:facet>
+
+				<p:column headerText="Codigo" sortBy="#{parada.numero}"
+					filterBy="#{parada.numero}" id="codigo">
+            #{parada.numero}
+        </p:column>
+
+				<p:column headerText="Nome"
+					sortBy="#{parada.nome}"
+					filterBy="#{parada.nome}" id="year">
+            #{parada.nome}
+        </p:column>
+
+				<p:column headerText="Itinerario" sortBy="#{parada.itinerario.nome}"
+					filterBy="#{parada.itinerario.nome}" id="telefone">
+            #{parada.itinerario.nome}
+        </p:column>
+
+				<p:column headerText="Latitude" sortBy="#{parada.latitude}"
+					filterBy="#{parada.latitude}" id="email">
+            #{parada.latitude}
+        </p:column>
+        
+        <p:column headerText="Longitude" sortBy="#{parada.longitude}"
+					filterBy="#{parada.longitude}" id="longitude">
+            #{parada.longitude}
+        </p:column>
+
+		<p:column headerText="Ordem" id="endereco" style="width:30px;">
+            #{parada.ordem}
+        </p:column>
+
+			</p:dataTable>
+</h:form>
+</h:body>
+</html>
