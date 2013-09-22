@@ -9,7 +9,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-
+<title>Destino Certo</title>
 </h:head>
 <h:body>
 
@@ -39,12 +39,12 @@
 					</p:submenu>
 
 					<p:submenu label="Parada">
-						<p:menuitem value="Novo" url="parada_listar.jsf" icon="ui-icon-plus" />
+						<p:menuitem value="Novo" url="parada_cadastro.jsf" icon="ui-icon-plus" />
 						<p:menuitem value="Listagem" url="parada_listar.jsf" icon="ui-icon-clipboard" />
 					</p:submenu>
 
 				</p:submenu>
-
+              
 				<p:menuitem value="Sair "
 					actionListener="#{sessaoMB.destruir_sessao_encaminhar}" url="login.jsf" />
 

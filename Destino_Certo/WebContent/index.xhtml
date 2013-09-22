@@ -42,7 +42,7 @@
 					</p:submenu>
 
 					<p:submenu label="Parada">
-						<p:menuitem value="Novo" url="parada_listar.jsf"
+						<p:menuitem value="Novo" url="parada_cadastro.jsf"
 							icon="ui-icon-plus" />
 						<p:menuitem value="Listagem" url="parada_listar.jsf"
 							icon="ui-icon-clipboard" />
@@ -64,30 +64,31 @@
 			<h:panelGrid columns="1">
 				<h:form>
 					<h:outputText value="Intinerário" />
-					
-					<h:selectOneMenu styleClass="wh130"
+
+					<h:selectOneMenu styleClass="wh130"  style="font-size:16px; width:245px; height:32px;"
 						value="#{destinoCertoMB.idItinerario}">
 						<f:selectItem itemLabel=" .:Selecione:. " />
 						<f:selectItems var="itinerario"
 							value="#{destinoCertoMB.listaItinerario}"
 							itemLabel="#{itinerario.nome}" itemValue="#{itinerario.numero}" />
 					</h:selectOneMenu>
-					
+
 					<h:commandButton
 						actionListener="#{destinoCertoMB.selecionarItinerario}"
 						value="Selecionar">
 					</h:commandButton>
-				
-					<h:dataTable id="tabela" var="parada" value="#{destinoCertoMB.listaParada2}" >
+
+					<h:dataTable id="tabela" var="parada" style="font-size:16px; width:280px;"
+						value="#{destinoCertoMB.listaParada2}">
 						<h:column>
-							#{parada.nome}
-						</h:column>		
+						<h:outputText style="font-size:14px;" value="#{parada.ordem} - #{parada.nome}"></h:outputText>
+						</h:column>
 					</h:dataTable>
-				
+
 				</h:form>
-				
+
 			</h:panelGrid>
-			
+
 		</div>
 
 		<div class="painel_direito">

@@ -39,7 +39,7 @@
 					</p:submenu>
 
 					<p:submenu label="Parada">
-						<p:menuitem value="Novo" url="parada_listar.jsf" icon="ui-icon-plus" />
+						<p:menuitem value="Novo" url="parada_cadastro.jsf" icon="ui-icon-plus" />
 						<p:menuitem value="Listagem" url="parada_listar.jsf" icon="ui-icon-clipboard" />
 					</p:submenu>
 
@@ -60,16 +60,17 @@
 		<div id="cadUsuario">
 			<p>&nbsp;</p>
 			<h:form>
+			<p:growl showDetail="true" showSummary="false"></p:growl>
 				<h:panelGrid columns="2">
 					<h:outputText value="Nome &nbsp;" />
-					<h:inputText value="#{cadastrarUsuarioMB.usuario.nome}" />
+					<h:inputText value="#{cadastrarUsuarioMB.usuario.nome}" required="true" requiredMessage="O campo nome é obrigatório"/>
 					<h:outputText value="Email &nbsp;" />
-					<h:inputText value="#{cadastrarUsuarioMB.usuario.email}" />
+					<h:inputText value="#{cadastrarUsuarioMB.usuario.email}" required="true" requiredMessage="O campo email é obrigatório" />
 
 					<h:outputText value="Login &nbsp;" />
-					<h:inputText value="#{cadastrarUsuarioMB.usuario.login}" />
+					<h:inputText value="#{cadastrarUsuarioMB.usuario.login}" required="true" requiredMessage="O campo login é obrigatório" />
 					<h:outputText value="Senha &nbsp;" />
-					<h:inputSecret value="#{cadastrarUsuarioMB.usuario.senha}" />
+					<h:inputSecret value="#{cadastrarUsuarioMB.usuario.senha}" required="true" requiredMessage="O campo senha é obrigatório" />
 
 				</h:panelGrid>
 

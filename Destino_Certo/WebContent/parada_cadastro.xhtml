@@ -35,7 +35,7 @@
 					</p:submenu>
 
 					<p:submenu label="Parada">
-						<p:menuitem value="Novo" url="parada_listar.jsf" icon="ui-icon-plus" />
+						<p:menuitem value="Novo" url="parada_cadastro.jsf" icon="ui-icon-plus" />
 						<p:menuitem value="Listagem" url="parada_listar.jsf" icon="ui-icon-clipboard" />
 					</p:submenu>
 
@@ -54,12 +54,12 @@
 			<h:panelGrid columns="1">
 				<h:form>
 					<h:outputText value="Intinerário" />
-					<h:selectOneMenu styleClass="wh130"
+					<h:selectOneMenu styleClass="wh130"  style="font-size:16px; width:245px; height:32px;"
 						value="#{cadastrarParadaMB.idItinerario}">
 						<f:selectItem itemLabel=" .:Selecione:. " />
 						<f:selectItems var="itinerario"
 							value="#{cadastrarParadaMB.listaItinerarios}"
-							itemLabel="#{itinerario.numero}" itemValue="#{itinerario.numero}" />
+							itemLabel="#{itinerario.nome}" itemValue="#{itinerario.numero}" />
 					</h:selectOneMenu>
 					<h:commandButton
 						actionListener="#{cadastrarParadaMB.selecionarItinerario}"
@@ -69,7 +69,7 @@
 		</div>
 		
 		<div class="painel_direito">
-			<p:gmap id="mapa" center="-8.126106,-34.92289" zoom="14"
+			<p:gmap id="mapa" center="#{cadastrarParadaMB.posicao}" zoom="13"
 				model="#{cadastrarParadaMB.locais}" onPointClick="dlgLocal.show()"
 				type="ROADMAP" style="width:750px;height:600px">
 				<p:ajax event="pointSelect" listener="#{cadastrarParadaMB.novo}"
