@@ -1,6 +1,7 @@
 package br.com.destino_certo.parada.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -27,14 +28,34 @@ public class ListarParadaMB implements Serializable {
 		// TODO Auto-generated constructor stub
 		fachada = Fachada.getInstance();
 		listaParadas = fachada.paradaListar();
+		parada = new Parada();
+	}
+	
+	public List<Parada> listaAtiva(List<Parada> lista){
+		List<Parada> listaFiltrada = new ArrayList<Parada>();
+		for(Parada parada:lista){
+			if(!parada.getNome().toLowerCase().equals("contorno")){
+				listaFiltrada.add(parada);
+			}
+		}
+		return listaFiltrada;
 	}
 
 	public List<Parada> getListaParadas() {
-		return listaParadas;
+		return listaAtiva(listaParadas);
 	}
 	
-	public void removerParada(Parada parada){
+	public void selecionar(Parada parada){
+		this.parada = parada;
+	}
+	
+	public void editar(){
+		FacesContextUtil.setMessageInformacao("Info", fachada.paradaEditar(parada));
+	}
+	
+	public void remover(){
 		FacesContextUtil.setMessageInformacao("Info", fachada.paradaRemover(parada));
+		listaParadas.remove(parada);
 	}
 
 	public void setListaParadas(List<Parada> listaParadas) {

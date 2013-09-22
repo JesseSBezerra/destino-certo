@@ -49,9 +49,22 @@ public class ControladorItinerario implements Serializable {
 		return itinerario;
 	}
 	
+	
+	public Itinerario procurarn(Long valorCampo0,String valorCampo1){
+		Itinerario itinerario = null;
+		try {
+			itinerario = iRepositorioItinerario.procurar("onibus.numero",valorCampo0, "ativo", true,"nome",valorCampo1);
+		} catch (ItinerarioNaoEncontradoException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		return itinerario;
+	}
+	
+	
 	public String editar(Itinerario itinerario){
 		String message = null;
-		if(existe(itinerario)){
+		if(exist(itinerario)){
 			try {
 				iRepositorioItinerario.editar(itinerario);
 				message = "Editado com sucesso!";
@@ -87,7 +100,21 @@ public class ControladorItinerario implements Serializable {
 	public boolean existe(Itinerario itinerario) {
 		boolean existe = false;
 		try {
-			Itinerario itinerarioExiste = procurar(itinerario.getNumero());
+			Itinerario itinerarioExiste = iRepositorioItinerario.procurar("onibus.numero", itinerario.getOnibus().getNumero(), "ativo", true,"nome",itinerario.getNome());
+			if (itinerarioExiste != null) {
+				existe = true;
+			}
+		} catch (Exception e) {
+
+		}
+
+		return existe;
+	}
+	
+	public boolean exist(Itinerario itinerario) {
+		boolean existe = false;
+		try {
+			Itinerario itinerarioExiste = iRepositorioItinerario.procurar(itinerario.getNumero());
 			if (itinerarioExiste != null) {
 				existe = true;
 			}

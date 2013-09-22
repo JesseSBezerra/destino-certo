@@ -101,4 +101,28 @@ public class RepositorioItinerario implements IRepositorioItinerario {
 		c.add(Restrictions.eq(nomeCampo, valorCampo));
 		return c.list();
 	}
+	
+	@Override
+	public Itinerario procurar(String nomeCampo, Long valorCampo,String nomeCampo0,boolean valorCampo0,String nomeCampo1,String valorCampo1)
+			throws ItinerarioNaoEncontradoException {
+		// TODO Auto-generated method stub
+		iniciarTransacao();
+		Itinerario itinerario = null;
+		Criteria c = s.createCriteria(Itinerario.class);
+		c.add(Restrictions.eq(nomeCampo, valorCampo));
+		c.add(Restrictions.eq(nomeCampo0, valorCampo0));
+		c.add(Restrictions.eq(nomeCampo1, valorCampo1));
+		try {
+			itinerario = (Itinerario) c.uniqueResult();
+			if (itinerario == null) {
+				throw new ItinerarioNaoEncontradoException();
+			}
+		} catch (Exception e) {
+			throw new ItinerarioNaoEncontradoException();
+		} finally {
+			s.close();
+		}
+		return itinerario;
+	}
+	
 }

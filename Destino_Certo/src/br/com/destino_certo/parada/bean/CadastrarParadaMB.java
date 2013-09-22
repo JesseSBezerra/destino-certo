@@ -30,6 +30,7 @@ public class CadastrarParadaMB implements Serializable {
 	private Parada parada;
 	private MapModel mapa;
 	private Long idItinerario;
+	private String posicao;
 	private Itinerario itinerario;
 	private List<Itinerario> listaItinerarios;
 	private List<Parada>listaParadas;
@@ -39,6 +40,7 @@ public class CadastrarParadaMB implements Serializable {
 		fachada = Fachada.getInstance();
 		parada = new Parada();
 		listaItinerarios = fachada.itinerarioListar();
+		posicao = "-8.126106,-34.92289";
 	}
 	
 	 public void novo(PointSelectEvent event) {
@@ -54,7 +56,6 @@ public class CadastrarParadaMB implements Serializable {
 	 
 	 public void gravar() {
 	        parada.setItinerario(itinerario);
-//		    System.out.println(fachada.paradaCadastrar(parada));
 		    FacesContextUtil.setMessageInformacao("Info", fachada.paradaCadastrar(parada));
 	        parada = new Parada();
 	        carregarLocais();
@@ -83,6 +84,10 @@ public class CadastrarParadaMB implements Serializable {
                     new LatLng(pa.getLatitude(), pa.getLongitude()),
                     pa.getNome()));
         }
+        if(locaisList.size()>0){
+        	 posicao = locaisList.get(1).getLatitude()+" , "+locaisList.get(1).getLongitude(); 	
+        }        	
+        System.out.println(posicao);
     }
 	
 	  public MapModel getLocais() {
@@ -118,6 +123,14 @@ public class CadastrarParadaMB implements Serializable {
 
 	public void setIdItinerario(Long idItinerario) {
 		this.idItinerario = idItinerario;
+	}
+
+	public String getPosicao() {
+		return posicao;
+	}
+
+	public void setPosicao(String posicao) {
+		this.posicao = posicao;
 	}
 	
 	

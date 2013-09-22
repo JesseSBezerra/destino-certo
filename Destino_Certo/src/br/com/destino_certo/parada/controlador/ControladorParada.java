@@ -58,7 +58,7 @@ public class ControladorParada implements Serializable {
 		String mensagem = null;
 		if(existe(parada)){
 			try {
-				iRepositorioParada.editar(parada);
+				iRepositorioParada.remover(parada);
 				mensagem = "Removido com sucesso";
 			} catch (ParadaNaoEncontradaException e) {
 				// TODO Auto-generated catch block
