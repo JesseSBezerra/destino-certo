@@ -34,10 +34,14 @@ public class CadastarItinerarioMB implements Serializable{
 	
 	public void cadastrar(){
 		itinerario.setAtivo(true);
+		if(numeroOnibus==0){
+			FacesContextUtil.setMessageInformacao("Info", "O campo onibus está vasio!");
+		}else{
 		itinerario.setOnibus(fachada.onibusProcurar(numeroOnibus));
 		FacesContextUtil.setMessageInformacao("Info", fachada.itinerarioCadastrar(itinerario));
 		itinerario = new Itinerario();
 		numeroOnibus = null;
+		}
 	}
 	
 
