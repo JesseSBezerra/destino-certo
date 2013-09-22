@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 import org.primefaces.model.map.DefaultMapModel;
@@ -18,7 +17,7 @@ import br.com.destino_certo.parada.modelo.Parada;
 import br.com.destino_certo.util.fachada.Fachada;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class DestinoCertoMB {
 
 	
