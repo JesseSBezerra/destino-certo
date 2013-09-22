@@ -57,8 +57,8 @@ public class Fachada {
 
 	// TODO USUARIO
 
-	public void usuarioCadastrar(Usuario usuario) {
-		controladorUsuario.cadastrar(usuario);
+	public String usuarioCadastrar(Usuario usuario) {
+	     return	controladorUsuario.cadastrar(usuario);
 	}
 
 	public String usuarioRemover(Usuario usuario) {
@@ -119,6 +119,10 @@ public class Fachada {
 
 	public Itinerario itinerarioProcurar(Long numero) {
 		return controladorItinerario.procurar(numero);
+	}
+	
+	public Itinerario itinerarioProcurar(Long numero,String nome) {
+		return controladorItinerario.procurarn(numero,nome);
 	}
 
 	public List<Itinerario> itinerarioListar() {

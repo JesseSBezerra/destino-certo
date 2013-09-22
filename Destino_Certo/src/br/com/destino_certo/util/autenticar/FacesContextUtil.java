@@ -76,6 +76,11 @@ public class FacesContextUtil {
 		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, outcome);
 	}
 	
+	//Metodo que pega a navegação
+		public static String getNavegacao(){
+			return (String) FacesContext.getCurrentInstance().getViewRoot().getViewId();
+		}
+	
 	public static void logout(){
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		setNavegacao("login");

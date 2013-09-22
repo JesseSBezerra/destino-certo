@@ -16,17 +16,20 @@ public class ControladorUsuario {
 		this.iRepositorioUsuario = iRepositorioUsuario;
 	}
 	
-	public void cadastrar(Usuario usuario){
+	public String cadastrar(Usuario usuario){
+		String mensagem = "";
 		try {
 			if(existe(usuario)){
-			System.out.println("usuario já cadastrado!");
+			mensagem = "usuario já cadastrado!";
 			}else{
 				iRepositorioUsuario.cadastrar(usuario);
+				mensagem = "Usuario cadastrado com sucesso!";
 			}
 		} catch (UsuarioJaCadastradoException e) {
 			// TODO Auto-generated catch block
-			System.err.print(e.getMessage());
+	    	mensagem = e.getMessage();
 		}
+		return mensagem;
 	}
 	
 	public Usuario procurar(String login){
