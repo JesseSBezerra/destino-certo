@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="css/style_form.css"></link>
 	<link rel="stylesheet" href="css/style_fechamento.css"></link>
 	<link rel="stylesheet" href="css/style_form_duplicata.css"></link>
+	<script src="js/script_cadastro.js"></script>
 </h:head>
 <h:body>
 
@@ -129,7 +130,7 @@
 				<h:outputLabel value="Email" />
 				<br></br>
 				<h:inputText styleClass="wh150"
-					value="#{listarItinerarioMB.itinerario.nome}"></h:inputText>
+					value="#{listarItinerarioMB.itinerario.nome}" onkeypress="return VerificaNomeProprio(event);" ></h:inputText>
 				<br></br>
 			</h:form>
 

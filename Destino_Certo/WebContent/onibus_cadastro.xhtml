@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="css/style_form.css"></link>
 	<link rel="stylesheet" href="css/style_fechamento.css"></link>
 	<link rel="stylesheet" href="css/style_form_duplicata.css"></link>
+	<script src="js/script_cadastro.js"></script>
 </h:head>
 <h:body>
 
@@ -69,12 +70,12 @@
 				<h:outputLabel value="Numero" style="font-size:20px" />
 				<br></br>
 				<h:inputText styleClass="wh150"
-					value="#{cadastrarOnibusMB.onibus.numero}" required="true" requiredMessage="O campo numero é de preenchimento obrigatório" style="width:300px;" />
+					value="#{cadastrarOnibusMB.onibus.numero}" onkeypress="return VerificaInteiro(event);" required="true" requiredMessage="O campo numero é de preenchimento obrigatório" style="width:300px;" />
 				<br></br>
 				<h:outputLabel value="Nome" style="font-size:20px"/>
 				<br></br>
 				<h:inputText styleClass="wh150"
-					value="#{cadastrarOnibusMB.onibus.nome}" required="true" requiredMessage="O campo nome é de preenchimento obrigatório" style="width:300px;" />
+					value="#{cadastrarOnibusMB.onibus.nome}" onkeypress="return VerificaNomeProprio(event);"  required="true" requiredMessage="O campo nome é de preenchimento obrigatório" style="width:300px;" />
 				<br></br>
 				<h:commandButton actionListener="#{cadastrarOnibusMB.cadastrar}"
 					value="Cadastrar" style="width:100px; height:40px; font-size:16px "></h:commandButton>

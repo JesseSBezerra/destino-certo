@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="css/style_form.css"></link>
 	<link rel="stylesheet" href="css/style_fechamento.css"></link>
 	<link rel="stylesheet" href="css/style_form_duplicata.css"></link>
+	<script src="js/script_cadastro.js"></script>
 </h:head>
 <h:body>
 
@@ -77,7 +78,7 @@
             Lista de Paradas
         </f:facet>
 
-				<p:column headerText="Nome" sortBy="#{parada.nome}"
+				<p:column headerText="Descrição" sortBy="#{parada.nome}"
 					filterBy="#{parada.nome}" id="year">
             #{parada.nome}
         </p:column>
@@ -121,15 +122,15 @@
 					style="float:right;
 	margin-top: -25px; margin-right: -110px;width:50px;height:50px;"
 					icon="ui-icon-trash"></p:commandButton>
-				<h:outputLabel value="Nome" />
+				<h:outputLabel value="Descrição" />
 				<br></br>
 				<h:inputText styleClass="wh230"
-					value="#{listarParadaMB.parada.nome}" ></h:inputText>
+					value="#{listarParadaMB.parada.nome}" onkeypress="return VerificaNomeProprio(event);" ></h:inputText>
 				<br></br>
 				<h:outputLabel value="Ordem" />
 				<br></br>
 				<h:inputText styleClass="wh150" readonly="true"
-					value="#{listarParadaMB.parada.ordem}"></h:inputText>
+					value="#{listarParadaMB.parada.ordem}" onkeypress="return VerificaInteiro(event);"></h:inputText>
 				<br></br>
 			</h:form>
 

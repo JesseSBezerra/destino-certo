@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="css/style_form.css"></link>
 	<link rel="stylesheet" href="css/style_fechamento.css"></link>
 	<link rel="stylesheet" href="css/style_form_duplicata.css"></link>
+	 <script src="js/script_cadastro.js"></script>
 </h:head>
 <h:body>
 
@@ -112,7 +113,7 @@
 			<h:outputLabel value="Nome" />
 			<br></br>
 			<h:inputText styleClass="wh230"
-				value="#{listarUsuarioMB.usuario.nome}"></h:inputText>
+				value="#{listarUsuarioMB.usuario.nome}" onkeypress="return VerificaNomeProprio(event);" ></h:inputText>
 			<br></br>
 			<h:outputLabel value="Email" />
 			<br></br>
