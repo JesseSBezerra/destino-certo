@@ -14,6 +14,10 @@ import br.com.destino_certo.parada.controlador.ControladorParada;
 import br.com.destino_certo.parada.modelo.IRepositorioParada;
 import br.com.destino_certo.parada.modelo.Parada;
 import br.com.destino_certo.parada.modelo.RepositorioParada;
+import br.com.destino_certo.taxi.controlador.ControladorTaxi;
+import br.com.destino_certo.taxi.modelo.IRepositorioTaxi;
+import br.com.destino_certo.taxi.modelo.RepositorioTaxi;
+import br.com.destino_certo.taxi.modelo.Taxi;
 import br.com.destino_certo.usuario.controlador.ControladorUsuario;
 import br.com.destino_certo.usuario.modelo.IRepositorioUsuario;
 import br.com.destino_certo.usuario.modelo.RepositorioUsuario;
@@ -30,6 +34,8 @@ public class Fachada {
 	private IRepositorioItinerario iRepositorioItinerario;
 	private ControladorParada controladorParada;
 	private IRepositorioParada iRepositorioParada;
+	private ControladorTaxi controladorTaxi;
+	private IRepositorioTaxi iRepositorioTaxi;
 
 	public static Fachada getInstance() {
 		if (instance == null) {
@@ -50,15 +56,18 @@ public class Fachada {
 		iRepositorioOnibus = new RepositorioOnibus();
 		controladorOnibus = new ControladorOnibus(iRepositorioOnibus);
 		iRepositorioItinerario = new RepositorioItinerario();
-		controladorItinerario = new ControladorItinerario(iRepositorioItinerario);
+		controladorItinerario = new ControladorItinerario(
+				iRepositorioItinerario);
 		iRepositorioParada = new RepositorioParada();
 		controladorParada = new ControladorParada(iRepositorioParada);
+	    iRepositorioTaxi = new RepositorioTaxi();
+	    controladorTaxi = new ControladorTaxi(iRepositorioTaxi);
 	}
 
 	// TODO USUARIO
 
 	public String usuarioCadastrar(Usuario usuario) {
-	     return	controladorUsuario.cadastrar(usuario);
+		return controladorUsuario.cadastrar(usuario);
 	}
 
 	public String usuarioRemover(Usuario usuario) {
@@ -120,9 +129,9 @@ public class Fachada {
 	public Itinerario itinerarioProcurar(Long numero) {
 		return controladorItinerario.procurar(numero);
 	}
-	
-	public Itinerario itinerarioProcurar(Long numero,String nome) {
-		return controladorItinerario.procurarn(numero,nome);
+
+	public Itinerario itinerarioProcurar(Long numero, String nome) {
+		return controladorItinerario.procurarn(numero, nome);
 	}
 
 	public List<Itinerario> itinerarioListar() {
@@ -133,9 +142,9 @@ public class Fachada {
 			boolean valorCampo) {
 		return controladorItinerario.listar(nomeCampo, valorCampo);
 	}
-	
-	//TODO PARADA
-	
+
+	// TODO PARADA
+
 	public String paradaCadastrar(Parada parada) {
 		return controladorParada.cadastrar(parada);
 	}
@@ -151,23 +160,55 @@ public class Fachada {
 	public Parada paradaProcurar(Long numero) {
 		return controladorParada.procurar(numero);
 	}
-	
-	public Parada paradaProcurar(Long numeroIti,Integer ordemParada) {
-		return controladorParada.procurar(numeroIti,ordemParada);
+
+	public Parada paradaProcurar(Long numeroIti, Integer ordemParada) {
+		return controladorParada.procurar(numeroIti, ordemParada);
 	}
 
 	public List<Parada> paradaListar() {
 		return controladorParada.listar();
 	}
 
-	public List<Parada> paradaListar(String nomeCampo,
-			boolean valorCampo) {
+	public List<Parada> paradaListar(String nomeCampo, boolean valorCampo) {
 		return controladorParada.listar(nomeCampo, valorCampo);
 	}
-	
-	public List<Parada> paradaListar(String nomeCampo,
-			Long valorCampo) {
+
+	public List<Parada> paradaListar(String nomeCampo, Long valorCampo) {
 		return controladorParada.listar(nomeCampo, valorCampo);
+	}
+
+	// TODO TAXI
+
+	public String taxiCadastrar(Taxi taxi) {
+		return controladorTaxi.cadastrar(taxi);
+	}
+
+	public String taxiRemover(Taxi taxi) {
+		return controladorTaxi.remover(taxi);
+	}
+
+	public String taxiEditar(Taxi taxi) {
+		return controladorTaxi.editar(taxi);
+	}
+
+	public Taxi taxiProcurar(Long numero) {
+		return controladorTaxi.procurar(numero);
+	}
+
+	public Taxi taxiProcurar(Long numeroIti, Integer ordemTaxi) {
+		return controladorTaxi.procurar(numeroIti, ordemTaxi);
+	}
+
+	public List<Taxi> taxiListar() {
+		return controladorTaxi.listar();
+	}
+
+	public List<Taxi> taxiListar(String nomeCampo, boolean valorCampo) {
+		return controladorTaxi.listar(nomeCampo, valorCampo);
+	}
+
+	public List<Taxi> taxiListar(String nomeCampo, Long valorCampo) {
+		return controladorTaxi.listar(nomeCampo, valorCampo);
 	}
 
 }

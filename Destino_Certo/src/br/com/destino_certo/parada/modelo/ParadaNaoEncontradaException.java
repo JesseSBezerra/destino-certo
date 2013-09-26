@@ -9,7 +9,7 @@ public class ParadaNaoEncontradaException extends Exception implements
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static final String message = "Itinerário não encontrada!";
+	private static final String message = "Parada não encontrada!";
 	
 	public ParadaNaoEncontradaException() {
 		// TODO Auto-generated constructor stub
