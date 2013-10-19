@@ -1,0 +1,54 @@
+@CHARSET "ISO-8859-1";
+
+.content_fechamento{
+	position: relative;
+	padding: 10px;
+	background-color: white;
+	width: 900px;
+	margin-top: 10px;
+	margin-left: 20px;
+	border: solid 1px #D4D4D4;
+	border-radius: 10px;
+	font-size: 12px; 
+}
+
+.content_fechamento strong{
+	font-size: 16px;
+}
+
+.form_incluir_produto, .form_concluir_venda{
+	position: relative;
+	float: left;
+	margin-top: 20px;
+}
+
+.form_incluir_produto label, .form_concluir_venda label{
+	position: relative;
+	float: left;
+	margin-bottom: 5px;
+}
+
+..form_incluir_produto br{
+	clear: both;
+}
+
+.form_incluir_produto input[type=text], .form_concluir_venda input[type=text]{
+	position: relative;
+	float: left;
+	margin-right: 10px;
+}
+.wh100{
+	width: 100px;
+}
+.wh250{
+	width: 250px;
+}
+.wh270{
+	width: 270px;
+}
+.wh130{
+	width: 120px;
+}
+.wh150{
+	width: 170px;
+}

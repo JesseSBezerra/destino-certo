@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<script type="text/javascript"
+		src="http://maps.google.com/maps/api/js?sensor=true" />
+	<link href="css/style_teste.css" rel="stylesheet" type="text/css" />
+	<title>Destino Certo</title>
+</h:head>
+<h:body>
+<ui:include src="topo.xhtml"></ui:include>
+	
+	<p:growl id="mensagem" showDetail="true" showSummary="false"></p:growl>
+	<div class="limitar">
+
+		<div class="painel_esquerdo">
+			<h:panelGrid columns="1">
+				<h:form>
+					<h:outputText value="Intinerário" />
+
+					<h:selectOneMenu styleClass="wh130"  style="font-size:16px; width:245px; height:32px;"
+						value="#{destinoCertoMB.idItinerario}">
+						<f:selectItem itemLabel=" .:Selecione:. " />
+						<f:selectItems var="itinerario"
+							value="#{destinoCertoMB.listaItinerario}"
+							itemLabel="#{itinerario.nome}" itemValue="#{itinerario.numero}" />
+					</h:selectOneMenu>
+
+					<h:commandButton
+						actionListener="#{destinoCertoMB.selecionarItinerario}"
+						value="Selecionar">
+					</h:commandButton>
+
+					<h:dataTable id="tabela" var="parada" style="font-size:16px; width:280px;"
+						value="#{destinoCertoMB.listaParada2}">
+						<h:column>
+						<h:outputText style="font-size:14px;" value="#{parada.ordem} - #{parada.nome}"></h:outputText>
+						</h:column>
+					</h:dataTable>
+
+				</h:form>
+
+			</h:panelGrid>
+
+		</div>
+
+		<div class="painel_direito">
+			<p:gmap id="mapa" center="#{destinoCertoMB.posicao}" zoom="14"
+				model="#{destinoCertoMB.polylineModel}" type="ROADMAP"
+				style="width:750px;height:600px">
+			</p:gmap>
+
+		</div>
+	</div>
+</h:body>
+</html>

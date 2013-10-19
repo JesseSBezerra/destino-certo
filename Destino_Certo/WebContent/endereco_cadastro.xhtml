@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+
+	<ui:include src="topo.xhtml"></ui:include>
+	<h:outputStylesheet library="css" name="default.css" />
+	<div class="limitar">
+
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<h1 align="center">Cadastro de Ruas</h1>
+
+		<div id="cadUsuario">
+			<p>&nbsp;</p>
+			<h:form id="form">
+				<p:growl showDetail="true" showSummary="false"></p:growl>
+			
+
+			<p:growl showSummary="false" showDetail="true"></p:growl>
+			<h:panelGrid columns="1">
+				<h:outputLabel styleClass="fonte" value="Logradouro"></h:outputLabel>
+				<h:inputText value="#{cadastroEnderecosMB.endereco.logradouro}"
+					size="50"></h:inputText>
+				<!-- Bairro -->
+				<h:outputLabel styleClass="fonte" value="Bairro"></h:outputLabel>
+				<h:inputText value="#{cadastroEnderecosMB.endereco.bairro}"
+					size="50"></h:inputText>
+
+				<!-- Cidade -->
+				<h:outputLabel styleClass="fonte" value="Cidade"></h:outputLabel>
+				<h:selectOneMenu value="#{cadastroEnderecosMB.endereco.cidade}"
+					style="width:208px;height:30px;">
+					<f:selectItem itemLabel="Recife" itemValue="Recife"></f:selectItem>
+				</h:selectOneMenu>
+				
+
+				<p:commandButton
+					actionListener="#{cadastroEnderecosMB.cadastrar}" update="form"
+					value="Cadastrar" />
+
+			</h:panelGrid>
+           </h:form>
+		</div>
+	</div>
+
+
+
+</h:body>
+</html>

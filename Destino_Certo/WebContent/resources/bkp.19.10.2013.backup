@@ -1,0 +1,322 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.2.4
+-- Dumped by pg_dump version 9.2.4
+-- Started on 2013-10-19 18:41:46
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 175 (class 3079 OID 11727)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 1966 (class 0 OID 0)
+-- Dependencies: 175
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+--
+-- TOC entry 174 (class 1259 OID 16431)
+-- Name: hibernate_sequence; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE hibernate_sequence
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.hibernate_sequence OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 168 (class 1259 OID 16385)
+-- Name: tbl_endereco; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tbl_endereco (
+    codigo integer NOT NULL,
+    bairro character varying(255),
+    cidade character varying(255),
+    code_busca character varying(255),
+    logradouro character varying(255)
+);
+
+
+ALTER TABLE public.tbl_endereco OWNER TO postgres;
+
+--
+-- TOC entry 169 (class 1259 OID 16393)
+-- Name: tbl_itinerario; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tbl_itinerario (
+    numero bigint NOT NULL,
+    ativo boolean,
+    nome character varying(255),
+    onibus_numero bigint
+);
+
+
+ALTER TABLE public.tbl_itinerario OWNER TO postgres;
+
+--
+-- TOC entry 170 (class 1259 OID 16398)
+-- Name: tbl_onibus; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tbl_onibus (
+    numero bigint NOT NULL,
+    ativo boolean,
+    nome character varying(255)
+);
+
+
+ALTER TABLE public.tbl_onibus OWNER TO postgres;
+
+--
+-- TOC entry 171 (class 1259 OID 16403)
+-- Name: tbl_parada; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tbl_parada (
+    numero bigint NOT NULL,
+    latitude double precision,
+    longitude double precision,
+    nome character varying(255),
+    ordem integer,
+    itinerario bigint
+);
+
+
+ALTER TABLE public.tbl_parada OWNER TO postgres;
+
+--
+-- TOC entry 172 (class 1259 OID 16408)
+-- Name: tbl_taxi; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tbl_taxi (
+    numero bigint NOT NULL,
+    latitude double precision,
+    longitude double precision,
+    nome character varying(255),
+    tarifa double precision,
+    tarifacorrida double precision
+);
+
+
+ALTER TABLE public.tbl_taxi OWNER TO postgres;
+
+--
+-- TOC entry 173 (class 1259 OID 16413)
+-- Name: tbl_usuario; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tbl_usuario (
+    login character varying(255) NOT NULL,
+    email character varying(255),
+    nome character varying(255),
+    senha character varying(255)
+);
+
+
+ALTER TABLE public.tbl_usuario OWNER TO postgres;
+
+--
+-- TOC entry 1967 (class 0 OID 0)
+-- Dependencies: 174
+-- Name: hibernate_sequence; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('hibernate_sequence', 19, true);
+
+
+--
+-- TOC entry 1952 (class 0 OID 16385)
+-- Dependencies: 168
+-- Data for Name: tbl_endereco; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tbl_endereco (codigo, bairro, cidade, code_busca, logradouro) FROM stdin;
+4	Aflitos	Recife	Avenida+Conselheiro+Rosa+e+Silva+Aflitos+Recife+BR	Avenida Conselheiro Rosa e Silva
+7	Aflitos	Recife	Rua+Samuel+Campelo+Aflitos+Recife+BR	Rua Samuel Campelo
+5	Aflitos	Recife	Avenida+Santos+Dumont+Aflitos+Recife+BR	Avenida Santos Dumont
+10	Aflitos	Recife	Rua+da+Angustura+Aflitos+Recife+BR	Rua da Angustura
+11	Aflitos	Recife	Rua+Padre+Silvino+Guedes+Aflitos+Recife+BR	Rua Padre Silvino Guedes
+12	Aflitos	Recife	Rua+Lauro+Montenegro+Aflitos+Recife+BR	Rua Lauro Montenegro
+14	Aflitos	Recife	Rua+Manuel+de+Carvalho+Aflitos+Recife+BR	Rua Manuel de Carvalho
+13	Aflitos	Recife	Rua+Natercio+de+Holanda+Aflitos+Recife+BR	Rua Natercio de Holanda
+9	Aflitos	Recife	Rua+Luiz+Rodolfo+de+Araujo+Aflitos+Recife+BR	Rua Luiz Rodolfo de Araujo
+16	Alto do Mandu	Recife	Praca+de+Apipucos+Alto+do+Mandu+Recife+BR	Praca de Apipucos
+17	Alto do Mandu	Recife	Rua+Jaguarana+Alto+do+Mandu+Recife+BR	Rua Jaguarana
+18	Imbiribeira	Recife	Rua+Capitao+Vicente+da+Mota+Imbiribeira+Recife+BR	Rua Capitao Vicente da Mota
+19	Imbiribeira	Recife	Rua+Evaristo+Carneiro+Leao+Imbiribeira+Recife+BR	Rua Evaristo Carneiro Leao
+\.
+
+
+--
+-- TOC entry 1953 (class 0 OID 16393)
+-- Dependencies: 169
+-- Data for Name: tbl_itinerario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tbl_itinerario (numero, ativo, nome, onibus_numero) FROM stdin;
+\.
+
+
+--
+-- TOC entry 1954 (class 0 OID 16398)
+-- Dependencies: 170
+-- Data for Name: tbl_onibus; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tbl_onibus (numero, ativo, nome) FROM stdin;
+\.
+
+
+--
+-- TOC entry 1955 (class 0 OID 16403)
+-- Dependencies: 171
+-- Data for Name: tbl_parada; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tbl_parada (numero, latitude, longitude, nome, ordem, itinerario) FROM stdin;
+\.
+
+
+--
+-- TOC entry 1956 (class 0 OID 16408)
+-- Dependencies: 172
+-- Data for Name: tbl_taxi; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tbl_taxi (numero, latitude, longitude, nome, tarifa, tarifacorrida) FROM stdin;
+1	-8.1064094310570809	-34.911203384399414	Teste	1.2	\N
+2	-8.1100420125496591	-34.912227988243103	Testea	1.2	\N
+3	-8.1133814097015122	-34.912147521972656	Testeeeee	\N	\N
+\.
+
+
+--
+-- TOC entry 1957 (class 0 OID 16413)
+-- Dependencies: 173
+-- Data for Name: tbl_usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tbl_usuario (login, email, nome, senha) FROM stdin;
+j	jesse.9001@gmail.com	Jessé	1
+\.
+
+
+--
+-- TOC entry 1939 (class 2606 OID 16392)
+-- Name: tbl_endereco_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tbl_endereco
+    ADD CONSTRAINT tbl_endereco_pkey PRIMARY KEY (codigo);
+
+
+--
+-- TOC entry 1941 (class 2606 OID 16397)
+-- Name: tbl_itinerario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tbl_itinerario
+    ADD CONSTRAINT tbl_itinerario_pkey PRIMARY KEY (numero);
+
+
+--
+-- TOC entry 1943 (class 2606 OID 16402)
+-- Name: tbl_onibus_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tbl_onibus
+    ADD CONSTRAINT tbl_onibus_pkey PRIMARY KEY (numero);
+
+
+--
+-- TOC entry 1945 (class 2606 OID 16407)
+-- Name: tbl_parada_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tbl_parada
+    ADD CONSTRAINT tbl_parada_pkey PRIMARY KEY (numero);
+
+
+--
+-- TOC entry 1947 (class 2606 OID 16412)
+-- Name: tbl_taxi_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tbl_taxi
+    ADD CONSTRAINT tbl_taxi_pkey PRIMARY KEY (numero);
+
+
+--
+-- TOC entry 1949 (class 2606 OID 16420)
+-- Name: tbl_usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tbl_usuario
+    ADD CONSTRAINT tbl_usuario_pkey PRIMARY KEY (login);
+
+
+--
+-- TOC entry 1950 (class 2606 OID 16421)
+-- Name: fk90b041f5a15713d0; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tbl_itinerario
+    ADD CONSTRAINT fk90b041f5a15713d0 FOREIGN KEY (onibus_numero) REFERENCES tbl_onibus(numero);
+
+
+--
+-- TOC entry 1951 (class 2606 OID 16426)
+-- Name: fkac93a3fe7c03577b; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tbl_parada
+    ADD CONSTRAINT fkac93a3fe7c03577b FOREIGN KEY (itinerario) REFERENCES tbl_itinerario(numero);
+
+
+--
+-- TOC entry 1965 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2013-10-19 18:41:47
+
+--
+-- PostgreSQL database dump complete
+--
+
