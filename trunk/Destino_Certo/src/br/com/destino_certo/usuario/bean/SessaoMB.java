@@ -12,6 +12,7 @@ public class SessaoMB {
 	public void destruir_sessao_encaminhar(){
 		FacesContextUtil.setSessionAttribute("usuario", null);
 		FacesContextUtil.setNavegacao("login");
+		System.out.println("teste");
 	}
 
 }
