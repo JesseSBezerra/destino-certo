@@ -1,0 +1,54 @@
+* {
+	margin: 0 auto;
+	padding: 0
+}
+
+body {
+	background-color: #FFCC29;
+}
+
+.formulario {
+	margin-top: 10%;
+	width: 400px;
+	border: 2px solid;
+	border-radius: 10px;
+	background-color: #fff;
+}
+
+.formulario p {
+	text-align: center;
+}
+
+.limitar {
+	width: 1000px;
+}
+
+.painel_esquerdo{
+	margin-top: 10px;
+	float: left;
+	width: 25%;
+}
+
+.painel_direito{
+	margin-top: 10px;
+	float: right;
+	width: 75%;
+}
+
+#cadUsuario{
+	margin-top: 5%;
+	width: 350px;
+	font-size: 20px;
+	background: white;
+	padding: 10px;
+	border: 1px solid;
+	border-radius: 5px;
+}
+
+#cadUsuario input{
+	margin:3px;
+	height: 20px;
+	width: 200px;
+}
+
+.menu{margin-top: 5px; margin-bottom: 5px;}

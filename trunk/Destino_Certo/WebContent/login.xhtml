@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<title>Destino Certo</title>
+</h:head>
+<h:body>
+	<h:outputStylesheet library="css" name="default.css" />
+    <script src="js/script_cadastro.js"></script>
+	<div class="formulario">
+		<p>
+			<img src="resources/images/logo.png" alt="Logomarca" width="300" />
+		</p>
+		<p>&nbsp;</p>
+		<h:form>
+			<p:growl id="growl" showDetail="true"></p:growl>
+			<h:panelGrid columns="2" cellspacing="15px">
+				<h:outputLabel value="Login" />
+				<h:inputText value="#{logarUsuarioMB.login}" required="true"
+					requiredMessage="O campo login é de preenchimento obrigatório"
+					style="height: 25px; font-size: 14px; padding-left: 5px;" onkeypress="return VerificaNomeProprio(event);" />
+				<h:outputLabel value="Senha" />
+				<h:inputSecret value="#{logarUsuarioMB.senha}" required="true"
+					requiredMessage="O campo senha é de preenchimento obrigatório"
+					style="height: 25px; font-size: 14px; padding-left: 5px;" />
+			</h:panelGrid>
+			<h:commandButton actionListener="#{logarUsuarioMB.logar}"
+				value=" Autenticar "
+				style="padding: 2px; margin-left:36%; font-family: Arial; font-size:14px; ">
+			</h:commandButton>
+		</h:form>
+		<p>&nbsp;</p>
+	</div>
+</h:body>
+</html>

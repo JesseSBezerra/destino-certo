@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+ <script src="js/script_cadastro.js"></script>
+</h:head>
+<h:body>
+    <ui:include src="topo.xhtml"></ui:include>
+	<h:outputStylesheet library="css" name="default.css" />
+	<div class="limitar">
+
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<h1 align="center">Cadastro de Usuários</h1>
+
+		<div id="cadUsuario">
+			<p>&nbsp;</p>
+			<h:form>
+			<p:growl showDetail="true" showSummary="false"></p:growl>
+				<h:panelGrid columns="2">
+					<h:outputText value="Nome &nbsp;" />
+					<h:inputText value="#{cadastrarUsuarioMB.usuario.nome}" required="true" onkeypress="return VerificaNomeProprio(event);" requiredMessage="O campo nome é obrigatório"/>
+					<h:outputText value="Email &nbsp;" />
+					<h:inputText value="#{cadastrarUsuarioMB.usuario.email}" required="true" requiredMessage="O campo email é obrigatório" />
+
+					<h:outputText value="Login &nbsp;" />
+					<h:inputText value="#{cadastrarUsuarioMB.usuario.login}" required="true" onkeypress="return VerificaNomeProprio(event);" requiredMessage="O campo login é obrigatório" />
+					<h:outputText value="Senha &nbsp;" />
+					<h:inputSecret value="#{cadastrarUsuarioMB.usuario.senha}" required="true" requiredMessage="O campo senha é obrigatório" />
+
+				</h:panelGrid>
+
+				<h:commandButton
+					actionListener="#{cadastrarUsuarioMB.cadastrarUsuario}"
+					value="Cadastrar"
+					style="width:100px; height: 30px; font-family: arial; font-weight: bold; float:right; margin-right: 43px;" />
+
+			</h:form>
+
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+		</div>
+	</div>
+</h:body>
+</html>
