@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<h:outputStylesheet library="css" name="default.css" />
+</h:head>
+<h:body>
+<h:form>
+<h:panelGrid cellpadding="50" cellspacing="50">
+<strong><h:outputLabel value="Você deseja realmente sair do sistema ?" style="font-size:120%;"></h:outputLabel></strong>
+</h:panelGrid>
+<h:panelGrid columns="2" cellspacing="10">
+<h:commandButton actionListener="#{sessaoMB.destruir_sessao_encaminhar}" style="width:80px;" value="sim" onclick="fechar(this)"/> <h:commandButton onclick="fecharSemSub(this)" style="width:80px;margin-right:80%;" value="Não"/>
+</h:panelGrid>
+</h:form>
+<script>
+function fechar(form){
+	  window.opener.location= "login.jsf";
+	window.close();
+}
+
+function fecharSemSub(form){
+	window.close();
+}
+</script>
+</h:body>
+</html>
