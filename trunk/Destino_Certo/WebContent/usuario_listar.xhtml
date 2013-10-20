@@ -73,7 +73,16 @@
 				update=":form_cadastro :form_duplica"
 				style="float:right;
 	margin-top: -25px; margin-right: -110px;width:50px;height:50px;"
-				icon="ui-icon-trash"></p:commandButton>
+				icon="ui-icon-trash">
+				<p:confirm header="Confirmação" message="Tem Certeza?" icon="ui-icon-alert" />
+				
+				</p:commandButton>
+				
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/> 	
+    </p:confirmDialog>
+				
 			<h:outputLabel value="Nome" />
 			<br></br>
 			<h:inputText styleClass="wh230"
