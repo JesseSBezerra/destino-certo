@@ -79,10 +79,9 @@ public class CadastrarParadaMB implements Serializable {
         mapa = new DefaultMapModel();
         List<Parada> locaisList = listaParada();
         for (Parada pa : locaisList) {
-            mapa.addOverlay(
-                    new Marker(
-                    new LatLng(pa.getLatitude(), pa.getLongitude()),
-                    pa.getNome()));
+        	Marker marker = new Marker(new LatLng(pa.getLatitude(), pa.getLongitude()),pa.getNome());
+        	marker.setIcon("http://png-5.findicons.com/files/icons/903/travel/32/bus.png");
+            mapa.addOverlay(marker);
         }
         if(locaisList.size()>0){
         	 posicao = locaisList.get(1).getLatitude()+" , "+locaisList.get(1).getLongitude(); 	

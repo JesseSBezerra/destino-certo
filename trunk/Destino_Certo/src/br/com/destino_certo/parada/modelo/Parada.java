@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
+import br.com.destino_certo.endereco.modelo.Endereco;
 import br.com.destino_certo.itinerario.modelo.Itinerario;
 
 
@@ -38,6 +39,14 @@ public class Parada implements Serializable {
 	
     @Column(name="longitude", nullable = true)
     private double longitude;
+    
+    @ManyToOne
+    @JoinColumn(name="origem")
+    private Endereco origem;
+    
+    @ManyToOne
+    @JoinColumn(name="destino")
+    private Endereco destino;
 	
 	@Column(name="ordem")
 	private Integer ordem;
@@ -92,6 +101,22 @@ public class Parada implements Serializable {
 
 	public void setItinerario(Itinerario itinerario) {
 		this.itinerario = itinerario;
+	}
+
+	public Endereco getOrigem() {
+		return origem;
+	}
+
+	public void setOrigem(Endereco origem) {
+		this.origem = origem;
+	}
+
+	public Endereco getDestino() {
+		return destino;
+	}
+
+	public void setDestino(Endereco destino) {
+		this.destino = destino;
 	}
 	
 	

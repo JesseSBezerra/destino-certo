@@ -32,13 +32,35 @@ public class ControladorEndereco {
 		}
 	}
 	
+	public String editar(Endereco endereco){
+		String mensagem = "";
+		try{
+			iRepositorioEndereco.remover(endereco);
+			cadastrar(endereco);
+			mensagem = "Editado com sucesso!";
+		}catch(Exception e){
+			mensagem = "Erro ao editar!";
+		}
+		return mensagem;
+	}
+	
+	public String remover(Endereco endereco){
+		String mensagem = "";
+		try{
+			iRepositorioEndereco.remover(endereco);
+			mensagem = "Removido com sucesso!";
+		}catch(Exception e){
+			mensagem = "Erro ao remover!";
+		}
+		return mensagem;
+	}
+	
 	
 
 	public String removeAcentos(String str) {
 		  str = Normalizer.normalize(str, Normalizer.Form.NFD);
 		  str = str.replaceAll("[^\\p{ASCII}]", "");
 		  return str;
-
 		}
 	
 	public boolean verifica(Endereco endereco){

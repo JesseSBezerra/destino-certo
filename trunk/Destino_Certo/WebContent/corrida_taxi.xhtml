@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true" />
+	<h:outputStylesheet library="css" name="default.css" />
+</h:head>
+<h:body>
+
+<div class="limitar">
+			<div class="painel_esquerdo">
+			<h:form>
+				<h:panelGrid columns="1">
+					<h:outputLabel value="Origem" />
+					<p:autoComplete completeMethod="#{consultarTaxiMB.origem}"
+						value="#{consultarTaxiMB.origem}" style="font-size:60%;" size="50" id="acMinLength"
+						minQueryLength="3" effect="fade" forceSelection="true"></p:autoComplete>
+					<h:outputLabel value="Destino" />
+					
+					<p:autoComplete completeMethod="#{consultarTaxiMB.destino}"
+						value="#{consultarTaxiMB.destino}" style="font-size:60%;" size="50" id="acMinLength1"
+						minQueryLength="3" effect="fade" forceSelection="true"></p:autoComplete>
+					<h:commandButton actionListener="#{consultarTaxiMB.consultar}" value="consultar"
+						style="width:80px; height:30px; margin-top:10px;"></h:commandButton>
+						
+					<h:outputLabel value="#{consultarTaxiMB.distancia}"></h:outputLabel>
+					<h:outputLabel value="#{consultarTaxiMB.valorAPagar}"></h:outputLabel>
+						
+				</h:panelGrid>
+				</h:form>
+			</div>
+			
+			<div class="painel_direito">
+			<p:gmap id="mapa" center="#{destinoCertoMB.posicao}" zoom="14"
+				model="#{consultarTaxiMB.polylineModel}" type="ROADMAP"
+				style="width:700px;height:600px">
+			</p:gmap>
+
+		</div>
+
+		</div>
+
+
+</h:body>
+</html>

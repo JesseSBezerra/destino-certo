@@ -230,5 +230,17 @@ public class Fachada {
 	public Endereco procurar(String logradouro){
 		return controladorEndereco.procurar(logradouro);
 	}
+	
+	public void enderecoCadastrar(Endereco endereco){
+		 controladorEndereco.cadastrar(endereco);
+	}
+	
+	public String enderecoEditar(Endereco endereco){
+		return controladorEndereco.editar(endereco);
+	}
+	
+	public String enderecoRemover(Endereco endereco){
+		return controladorEndereco.remover(endereco);
+	}
 
 }

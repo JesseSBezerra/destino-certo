@@ -112,13 +112,19 @@ public class ConsultarTaxiMB implements Serializable{
         for (br.com.destino_certo.util.decode.LatLng latLng : Decode.decodePolyLine(locaisList.get("poly"))) {
             LatLng coordenada = new LatLng(latLng.getLatitude(), latLng.getLongitude());
             polyline.getPaths().add(coordenada);
-            System.out.println(coordenada.getLat());
             
         }
+        Marker markerInicio = new Marker(polyline.getPaths().get(0));
+        markerInicio.setIcon("http://www.google.com/intl/en_us/mapfiles/ms/micons/red-dot.png");
+        Marker markerFim = new Marker(polyline.getPaths().get(polyline.getPaths().size()-1)); 
+        markerFim.setIcon("http://www.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png");
+        polylineModel.addOverlay(markerFim);
+        polylineModel.addOverlay(markerInicio);
         polyline.setStrokeWeight(3);
 		polyline.setStrokeColor("#8B0000");
 		polyline.setStrokeOpacity(0.7);
 		polylineModel.addOverlay(polyline);
+		
     }
 	
 
