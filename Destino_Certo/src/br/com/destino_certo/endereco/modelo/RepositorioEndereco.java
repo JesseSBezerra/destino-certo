@@ -35,6 +35,7 @@ public class RepositorioEndereco implements IRepositorioEndereco{
 	@Override
 	public void editar(Endereco endereco) {
 		// TODO Auto-generated method stub
+		init();
 		try{
 			s.update(endereco);
 			tx.commit();
@@ -50,6 +51,7 @@ public class RepositorioEndereco implements IRepositorioEndereco{
 	@Override
 	public void remover(Endereco endereco) {
 		// TODO Auto-generated method stub
+		init();
 		try{
 			s.delete(endereco);
 			tx.commit();

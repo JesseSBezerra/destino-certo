@@ -16,7 +16,7 @@ public class FaseListener implements PhaseListener{
 		
 		if(fase.getPhaseId().equals(PhaseId.RENDER_RESPONSE)){
 			Usuario  usuario = (Usuario) FacesContextUtil.getSessionAttribute("usuario");
-			if(usuario == null && !FacesContextUtil.getNavegacao().equals("/index.xhtml")){
+			if(usuario == null && !FacesContextUtil.getNavegacao().equals("/index.xhtml") && !FacesContextUtil.getNavegacao().equals("/corrida_taxi.xhtml")){
 				FacesContextUtil.setNavegacao("login");
 				System.out.println(FacesContextUtil.getNavegacao());
 				if(FacesContextUtil.getNavegacao().equals("/login.xhtml")){
