@@ -17,7 +17,6 @@ import org.primefaces.model.map.Polyline;
 
 
 import br.com.destino_certo.endereco.modelo.Endereco;
-import br.com.destino_certo.parada.modelo.Parada;
 import br.com.destino_certo.taxi.modelo.Taxi;
 import br.com.destino_certo.util.decode.Decode;
 import br.com.destino_certo.util.fachada.Fachada;

@@ -23,6 +23,7 @@ public class ControladorItinerario implements Serializable {
 	}
 
 	public String cadastrar(Itinerario itinerario) {
+		itinerario.setNome(montarNome(itinerario));
 		String message = null;
         if(existe(itinerario)){
         	message = "Itinerario já cadastrado";
@@ -36,6 +37,12 @@ public class ControladorItinerario implements Serializable {
 			}
         }
 		return message;
+	}
+	
+	private String montarNome(Itinerario itinerario) {
+		String nome = null;
+        nome = itinerario.getOrigem().getLogradouro() + " - " + itinerario.getDestino().getLogradouro();		
+		return nome;
 	}
 
 	public Itinerario procurar(Long numero) {

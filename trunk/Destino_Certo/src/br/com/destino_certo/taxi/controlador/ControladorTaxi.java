@@ -1,7 +1,6 @@
 package br.com.destino_certo.taxi.controlador;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +14,6 @@ import br.com.destino_certo.taxi.modelo.TaxiJaCadastradoExcepetion;
 import br.com.destino_certo.taxi.modelo.TaxiNaoEncontradoException;
 import br.com.destino_certo.util.decode.Http;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 public class ControladorTaxi implements Serializable {
 
