@@ -34,16 +34,23 @@
 				<p:growl id="growl" showDetail="true" showSummary="false"></p:growl>
 				<h:panelGrid columns="1">
 					<h:outputLabel value="Onibus" style="font-size:20px"/>
-					<h:selectOneMenu style="font-size:16px; width:265px; height:32px;"
+					<p:selectOneMenu style="font-size:16px; width:265px; height:32px;"
 						value="#{cadastarItinerarioMB.numeroOnibus}">
 						<f:selectItem itemLabel=" .:Selecione:. " itemValue="0" />
 						<f:selectItems var="onibus" value="#{cadastarItinerarioMB.lista}"
 							itemLabel="#{onibus.nome}" itemValue="#{onibus.numero}" />
-					</h:selectOneMenu>
-
-					<h:outputLabel value="Nome" style="font-size:20px"/>
-					<h:inputText styleClass="wh250"
-						value="#{cadastarItinerarioMB.itinerario.nome}" style="font-size:16px" onkeypress="return VerificaNomeProprio(event);" required="true" requiredMessage="O Campo nome é obrigatório"></h:inputText>
+					</p:selectOneMenu>
+					
+					<h:outputLabel value="Origem" style="font-size:20px" />
+					<p:autoComplete completeMethod="#{cadastarItinerarioMB.origem}"
+						value="#{cadastarItinerarioMB.origem}" style="font-size:70%;" size="60" id="acMinLength"
+						minQueryLength="3" effect="fade" forceSelection="true"></p:autoComplete>
+					
+					<h:outputLabel value="Destino"  style="font-size:20px"/>
+					<p:autoComplete completeMethod="#{cadastarItinerarioMB.destino}"
+						value="#{cadastarItinerarioMB.destino}" style="font-size:70%;" size="60" id="acMinLength1"
+						minQueryLength="3" effect="fade" forceSelection="true"></p:autoComplete>
+					
 				</h:panelGrid>
 				<h:commandButton value="Cadastrar"
 					actionListener="#{cadastarItinerarioMB.cadastrar}" style="width:100px; height:40px; font-size:16px ; float:right; margin-right: 19px;"></h:commandButton>

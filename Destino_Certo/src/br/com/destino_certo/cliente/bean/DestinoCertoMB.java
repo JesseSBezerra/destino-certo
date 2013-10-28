@@ -2,6 +2,7 @@ package br.com.destino_certo.cliente.bean;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -14,6 +15,7 @@ import org.primefaces.model.map.Polyline;
 
 import br.com.destino_certo.itinerario.modelo.Itinerario;
 import br.com.destino_certo.parada.modelo.Parada;
+import br.com.destino_certo.util.decode.Decode;
 import br.com.destino_certo.util.fachada.Fachada;
 
 @ManagedBean
@@ -30,7 +32,7 @@ public class DestinoCertoMB {
 	private List<Parada> listaParadas;
 	private List<Parada> listaParada2;
 	private List<Itinerario> listaItinerario;
-	
+	private Map<String, String> valores;
 	
 	private MapModel polylineModel;
 
@@ -39,32 +41,7 @@ public class DestinoCertoMB {
 		parada = new Parada();
 		listaItinerario = fachada.itinerarioListar();
 		posicao = "-8.04161,-34.89818";
-//		 polylineModel = new DefaultMapModel();
-//		  Polyline polyline = new Polyline();
-//		  polyline.getPaths().add(new LatLng( -8041610.0,  -3.489818E7)); 
-//          polyline.getPaths().add(new LatLng( -8040660.0,  -3.48986E7)); 
-//          polyline.getPaths().add(new LatLng( -8039510.0,  -3.489945E7)); 
-//          polyline.getPaths().add(new LatLng( -8038160.0,  -3.490067E7)); 
-//          polyline.getPaths().add(new LatLng( -8037530.0,  -3.490123E7)); 
-//          polyline.getPaths().add(new LatLng( -8036910.0,  -3.490171E7)); 
-//          polyline.getPaths().add(new LatLng( -8035660.0,  -3.490226E7)); 
-//          polyline.getPaths().add(new LatLng( -8034710.0,  -3.490264E7)); 
-//          polyline.getPaths().add(new LatLng( -8034700.0,  -3.490232E7)); 
-//          polyline.getPaths().add(new LatLng( -8034850.0,  -3.490152E7)); 
-//          polyline.getPaths().add(new LatLng( -8035270.0,  -3.489924E7)); 
-//          polyline.getPaths().add(new LatLng( -8035370.0,  -3.489854E7)); 
-//          polyline.getPaths().add(new LatLng( -8035640.0,  -3.489759E7)); 
-//          polyline.getPaths().add(new LatLng( -8035870.0,  -3.489686E7)); 
-//          polyline.getPaths().add(new LatLng( -8036040.0,  -3.48964E7)); 
-//          polyline.getPaths().add(new LatLng( -8036130.0,  -3.489616E7)); 
-//          polyline.getPaths().add(new LatLng( -8036610.0,  -3.489499E7)); 
-//          polyline.getPaths().add(new LatLng( -8037670.0,  -3.489531E7)); 
-//          polyline.getPaths().add(new LatLng( -8037950.0,  -3.489542E7)); 
-//          polyline.getPaths().add(new LatLng( -8037990.0,  -3.489529E7));    
-//          polyline.setStrokeWeight(3);
-//  		polyline.setStrokeColor("#FF9900");
-//  		polyline.setStrokeOpacity(0.7);
-//  		polylineModel.addOverlay(polyline);
+		polylineModel = new DefaultMapModel();
 		
 	}
 
@@ -75,22 +52,24 @@ public class DestinoCertoMB {
 	 
 	 public void selecionarItinerario(){
 		 itinerario = fachada.itinerarioProcurar(idItinerario);
+		 valores = Decode.consultaMaps(itinerario.getOrigem().getCodeBusca(), itinerario.getDestino().getCodeBusca());
 		 carregarLocais();
+		 carregarParadas(listaParada(itinerario));
 	 }
 	 
 	 public void carregarParadas(){
-		 listaParada2 = listaParada();
+		 listaParada2 = listaParada(itinerario);
 	 }
 	
-	public List<Parada> listaParada(){
-		List<Parada> listaP;
-		if(itinerario==null){
-			listaP = new ArrayList<Parada>();
-		}else{
-			listaP = fachada.paradaListar("itinerario.numero", itinerario.getNumero());
+	 public List<Parada> listaParada(Itinerario itinerario){
+			List<Parada> listaP;
+			if(itinerario==null){
+				listaP = new ArrayList<Parada>();
+			}else{
+				listaP = fachada.paradaListar("itinerario.numero", itinerario.getNumero());
+			}
+			return listaP;
 		}
-		return listaP;
-	}
 	
 	public List<Parada> atualizarParadas(List<Parada> lista){
 		List<Parada> listaParada = new ArrayList<Parada>();
@@ -106,42 +85,35 @@ public class DestinoCertoMB {
 		return listaParada;
 	}
 	
+	public void carregarParadas(List<Parada> lista){
+		for(Parada parada:lista){
+			Marker marker = new Marker(new LatLng(parada.getLatitude(), parada.getLongitude()),parada.getNome());
+			marker.setIcon("http://png-5.findicons.com/files/icons/903/travel/32/bus.png");	
+			polylineModel.addOverlay(marker);
+		}
+	}
+
+	
 	private void carregarLocais() {
         polylineModel = new DefaultMapModel();
         Polyline polyline = new Polyline();
-        List<Parada> locaisList = listaParada();
-        for (Parada pa : locaisList) {
-            LatLng coordenada = new LatLng(pa.getLatitude(), pa.getLongitude());
-           
-            polyline.getPaths().add(new LatLng( -8041610.0,  -3.489818E7)); 
-            polyline.getPaths().add(new LatLng( -8040660.0,  -3.48986E7)); 
-            polyline.getPaths().add(new LatLng( -8039510.0,  -3.489945E7)); 
-            polyline.getPaths().add(new LatLng( -8038160.0,  -3.490067E7)); 
-            polyline.getPaths().add(new LatLng( -8037530.0,  -3.490123E7)); 
-            polyline.getPaths().add(new LatLng( -8036910.0,  -3.490171E7)); 
-            polyline.getPaths().add(new LatLng( -8035660.0,  -3.490226E7)); 
-            polyline.getPaths().add(new LatLng( -8034710.0,  -3.490264E7)); 
-            polyline.getPaths().add(new LatLng( -8034700.0,  -3.490232E7)); 
-            polyline.getPaths().add(new LatLng( -8034850.0,  -3.490152E7)); 
-            polyline.getPaths().add(new LatLng( -8035270.0,  -3.489924E7)); 
-            polyline.getPaths().add(new LatLng( -8035370.0,  -3.489854E7)); 
-            polyline.getPaths().add(new LatLng( -8035640.0,  -3.489759E7)); 
-            polyline.getPaths().add(new LatLng( -8035870.0,  -3.489686E7)); 
-            polyline.getPaths().add(new LatLng( -8036040.0,  -3.48964E7)); 
-            polyline.getPaths().add(new LatLng( -8036130.0,  -3.489616E7)); 
-            polyline.getPaths().add(new LatLng( -8036610.0,  -3.489499E7)); 
-            polyline.getPaths().add(new LatLng( -8037670.0,  -3.489531E7)); 
-            polyline.getPaths().add(new LatLng( -8037950.0,  -3.489542E7)); 
-            polyline.getPaths().add(new LatLng( -8037990.0,  -3.489529E7));      
-           polyline.getPaths().add(coordenada);
+        for (br.com.destino_certo.util.decode.LatLng latLng : Decode.decodePolyLine(valores.get("poly"))) {
+            LatLng coordenada = new LatLng(latLng.getLatitude(), latLng.getLongitude());
+            polyline.getPaths().add(coordenada);
             
         }
-        listaParada2 = atualizarParadas(locaisList);
-        posicao = polyline.getPaths().get(1).getLat() +" , "+polyline.getPaths().get(1).getLng();
+        posicao = polyline.getPaths().get(0).getLat()+","+polyline.getPaths().get(0).getLng();
+        Marker markerInicio = new Marker(polyline.getPaths().get(0));
+        markerInicio.setIcon("http://www.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png");
+        Marker markerFim = new Marker(polyline.getPaths().get(polyline.getPaths().size()-1)); 
+        markerFim.setIcon("http://www.google.com/intl/en_us/mapfiles/ms/micons/red-dot.png");
+        polylineModel.addOverlay(markerFim);
+        polylineModel.addOverlay(markerInicio);
         polyline.setStrokeWeight(3);
-		polyline.setStrokeColor("#FF9900");
+		polyline.setStrokeColor("#8B0000");
 		polyline.setStrokeOpacity(0.7);
 		polylineModel.addOverlay(polyline);
+		
     }
 	
 	  public List<Parada> getListaParada2() {

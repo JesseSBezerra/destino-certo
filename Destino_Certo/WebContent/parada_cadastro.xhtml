@@ -36,8 +36,8 @@
 		</div>
 		
 		<div class="painel_direito">
-			<p:gmap id="mapa" center="#{cadastrarParadaMB.posicao}" zoom="13"
-				model="#{cadastrarParadaMB.locais}" onPointClick="dlgLocal.show()"
+			<p:gmap id="mapa" center="#{cadastrarParadaMB.posicao}" zoom="15"
+				model="#{cadastrarParadaMB.polylineModel}" onPointClick="dlgLocal.show()"
 				type="ROADMAP" style="width:750px;height:600px">
 				<p:ajax event="pointSelect" listener="#{cadastrarParadaMB.novo}"
 					update="formLocal" />
@@ -49,8 +49,6 @@
 					<h:panelGrid columns="2" style="width:100%">
 						<h:outputLabel for="desc" value="Descrição:" />
 						<p:inputText id="desc" value="#{cadastrarParadaMB.parada.nome}" onkeypress="return VerificaNomeProprio(event);" />
-						<h:outputText value="Ordem" />
-						<h:inputText value="#{cadastrarParadaMB.parada.ordem}" onkeypress="return VerificaInteiro(event);" ></h:inputText>
 					</h:panelGrid>
 					<p:commandButton value="Gravar"
 						actionListener="#{cadastrarParadaMB.gravar()}"

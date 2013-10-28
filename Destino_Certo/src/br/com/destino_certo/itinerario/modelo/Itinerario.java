@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import br.com.destino_certo.endereco.modelo.Endereco;
 import br.com.destino_certo.onibus.modelo.Onibus;
 
 @Entity
@@ -34,6 +35,14 @@ public class Itinerario implements Serializable {
 	
 	@Column(name="ativo")
 	private boolean ativo;
+	
+	@ManyToOne(optional=true)
+	@JoinColumn
+	private Endereco origem;
+	
+	@ManyToOne(optional=true)
+	@JoinColumn
+	private Endereco destino;
 	
 	@ManyToOne(optional=true)
 	@JoinColumn
@@ -69,6 +78,22 @@ public class Itinerario implements Serializable {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+
+	public Endereco getOrigem() {
+		return origem;
+	}
+
+	public void setOrigem(Endereco origem) {
+		this.origem = origem;
+	}
+
+	public Endereco getDestino() {
+		return destino;
+	}
+
+	public void setDestino(Endereco destino) {
+		this.destino = destino;
 	}
 		
 
