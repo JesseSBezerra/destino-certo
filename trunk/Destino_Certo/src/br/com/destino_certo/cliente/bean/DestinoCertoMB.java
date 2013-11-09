@@ -188,8 +188,6 @@ public class DestinoCertoMB {
 
 	public void setPosicao(String posicao) {
 		this.posicao = posicao;
-	}
-
-	
+	}	
 
 }
