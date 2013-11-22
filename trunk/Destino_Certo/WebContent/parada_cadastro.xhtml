@@ -17,24 +17,6 @@
 	<p:growl id="mensagem" showDetail="true" showSummary="false"></p:growl>
 	<div class="limitar">
 
-		<div class="painel_esquerdo">
-			<h:panelGrid columns="1">
-				<h:form>
-					<h:outputText value="Intinerário" />
-					<h:selectOneMenu styleClass="wh130"  style="font-size:16px; width:245px; height:32px;"
-						value="#{cadastrarParadaMB.idItinerario}">
-						<f:selectItem itemLabel=" .:Selecione:. " />
-						<f:selectItems var="itinerario"
-							value="#{cadastrarParadaMB.listaItinerarios}"
-							itemLabel="#{itinerario.nome}" itemValue="#{itinerario.numero}" />
-					</h:selectOneMenu>
-					<h:commandButton
-						actionListener="#{cadastrarParadaMB.selecionarItinerario}"
-						value="Selecionar"></h:commandButton>
-				</h:form>
-			</h:panelGrid>
-		</div>
-		
 		<div class="painel_direito">
 			<p:gmap id="mapa" center="#{cadastrarParadaMB.posicao}" zoom="15"
 				model="#{cadastrarParadaMB.polylineModel}" onPointClick="dlgLocal.show()"
