@@ -67,8 +67,8 @@ public class Decode {
 			   } while (b >= 0x20);
 			   int dlng = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
 			   lng += dlng;
-			   LatLng p = new LatLng((((double) lat / 1E5)),
-			     (((double) lng / 1E5)));
+			   LatLng p = new LatLng(((lat / 1E5)),
+			     ((lng / 1E5)));
 			   poly1.add(p);
 			  }
 			  return poly1;

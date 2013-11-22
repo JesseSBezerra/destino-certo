@@ -1,7 +1,7 @@
 package br.com.destino_certo.usuario.bean;
 
-import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 import br.com.destino_certo.usuario.modelo.Usuario;
 import br.com.destino_certo.util.autenticar.FacesContextUtil;

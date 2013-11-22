@@ -24,9 +24,6 @@ public class ControladorParada implements Serializable {
 	
 	public String cadastrar(Parada parada){
 		String mensagem = null;
-		if(existe(parada)){
-			mensagem = "Parada já cadastrada!";
-		}else{
 			try {
 				iRepositorioParada.cadastrar(parada);
 				mensagem = "Cadastrado com sucesso!";
@@ -34,13 +31,11 @@ public class ControladorParada implements Serializable {
 				// TODO Auto-generated catch block
 				mensagem = e.getMessage();
 			}
-		}
 		return mensagem;
 	}
 	
 	public String editar(Parada parada){
 		String mensagem = null;
-		if(existe(parada)){
 			try {
 				iRepositorioParada.editar(parada);
 				mensagem = "Editado com sucesso";
@@ -48,9 +43,6 @@ public class ControladorParada implements Serializable {
 				// TODO Auto-generated catch block
 				mensagem = e.getMessage();
 			}
-		}else{
-			mensagem = "Erro ao editar";
-		}
 		return mensagem;
 	}
 	
@@ -107,7 +99,7 @@ public class ControladorParada implements Serializable {
 	private boolean existe(Parada parada){
 		boolean jaCadastrado = false;
 		try {
-			Parada paradaExiste = procurar(parada.getItinerario().getNumero(),parada.getOrdem());
+			Parada paradaExiste = null;
 			if(!paradaExiste.equals(null)){
 				jaCadastrado = true;
 			}

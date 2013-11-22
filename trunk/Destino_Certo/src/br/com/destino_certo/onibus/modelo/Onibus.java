@@ -4,8 +4,11 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="tbl_onibus")
@@ -17,7 +20,9 @@ public class Onibus implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name ="numero")
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
+	@Column(name = "numero")
 	private Long numero;
 	
 	@Column(name="nome")

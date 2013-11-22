@@ -86,7 +86,6 @@ public class RepositorioParada implements IRepositorioParada {
 		// TODO Auto-generated method stub
 		iniciarTransacao();
 		Criteria c = s.createCriteria(Parada.class);
-		c.addOrder(Order.asc("itinerario.numero"));
 		return c.list();
 	}
 

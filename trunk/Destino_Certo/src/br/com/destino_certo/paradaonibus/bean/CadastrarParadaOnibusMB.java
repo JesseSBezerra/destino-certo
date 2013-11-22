@@ -1,99 +1,93 @@
-package br.com.destino_certo.parada.bean;
+package br.com.destino_certo.paradaonibus.bean;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import org.primefaces.event.map.PointSelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
 import org.primefaces.model.map.MapModel;
 import org.primefaces.model.map.Marker;
-import org.primefaces.model.map.Polyline;
 
 import br.com.destino_certo.onibus.modelo.Onibus;
 import br.com.destino_certo.parada.modelo.Parada;
 import br.com.destino_certo.util.autenticar.FacesContextUtil;
-import br.com.destino_certo.util.decode.Decode;
 import br.com.destino_certo.util.fachada.Fachada;
 
 @ManagedBean
 @ViewScoped
-public class CadastrarParadaMB implements Serializable {
+public class CadastrarParadaOnibusMB implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	public Long getIdOnibus() {
+		return idOnibus;
+	}
+
+
+	public void setIdOnibus(Long idOnibus) {
+		this.idOnibus = idOnibus;
+	}
+
+
 	private Fachada fachada;
 	private Parada parada;
 	private MapModel mapa;
 	private Long idItinerario;
+	private Long idOnibus;
 	private String posicao;
+	private Onibus onibus;
 	private List<Parada>listaParadas;
-	private Map<String, String> valores;
+	private List<Onibus> listaOnibus;
 	
 	private MapModel polylineModel;
 	
-	public CadastrarParadaMB() {
+	public CadastrarParadaOnibusMB() {
 		// TODO Auto-generated constructor stub
 		fachada = Fachada.getInstance();
 		parada = new Parada();
+		listaParadas = fachada.paradaListar();
+		setListaOnibus(fachada.onibusListar());
 		posicao = "-8.126106,-34.92289";
-		polylineModel = new DefaultMapModel();
-		carregarParadas(fachada.paradaListar());
 	}
 	
-	 public void novo(PointSelectEvent event) {
-	        LatLng coord = event.getLatLng();
-	        parada.setLatitude(coord.getLat());
-	        parada.setLongitude(coord.getLng());
-		 
-	    }
 	 
-	 public void gravar() {
-		    List<Onibus> lista = new ArrayList<Onibus>();
-		    parada.setOnibus(lista);
-		    FacesContextUtil.setMessageInformacao("Info", fachada.paradaCadastrar(parada));
-	        parada = new Parada();
-	        carregarParadas(fachada.paradaListar());
-	    }
-
+	 public void selecionarParada(){
+		 parada = fachada.paradaProcurar(idItinerario);
+		 carregarLocais();
+		 carregarParada();
+	 }
+	 
+	 public void cadastrarParadaOnibus(){
+		 try{
+		 onibus = fachada.onibusProcurar(idOnibus);
+		 parada.getOnibus().add(onibus);
+		 fachada.paradaEditar(parada);
+		 carregarLocais();
+		 carregarParada();
+		 FacesContextUtil.setMessageInformacao("Info", "Cadastrada com Sucesso!");
+		 }catch(Exception e){
+			 FacesContextUtil.setMessageErro("ERRO", "Erro ao cadastrar " + e.getCause());
+		 }
+	 }
 	
 	
-	
-	public void carregarParadas(List<Parada> lista){
-		for(Parada parada:lista){
+	public void carregarParada(){
 			Marker marker = new Marker(new LatLng(parada.getLatitude(), parada.getLongitude()),parada.getNome());
 			marker.setIcon("http://png-5.findicons.com/files/icons/903/travel/32/bus.png");	
 			polylineModel.addOverlay(marker);
 		}
-	}
+	
 	
 	
 	private void carregarLocais() {
         polylineModel = new DefaultMapModel();
-        Polyline polyline = new Polyline();
-        for (br.com.destino_certo.util.decode.LatLng latLng : Decode.decodePolyLine(valores.get("poly"))) {
-            LatLng coordenada = new LatLng(latLng.getLatitude(), latLng.getLongitude());
-            polyline.getPaths().add(coordenada);
-            
-        }
-        posicao = polyline.getPaths().get(0).getLat()+","+polyline.getPaths().get(0).getLng();
-        Marker markerInicio = new Marker(polyline.getPaths().get(0));
-        markerInicio.setIcon("http://www.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png");
-        Marker markerFim = new Marker(polyline.getPaths().get(polyline.getPaths().size()-1)); 
-        markerFim.setIcon("http://www.google.com/intl/en_us/mapfiles/ms/micons/red-dot.png");
-        polylineModel.addOverlay(markerFim);
-        polylineModel.addOverlay(markerInicio);
-        polyline.setStrokeWeight(3);
-		polyline.setStrokeColor("#8B0000");
-		polyline.setStrokeOpacity(0.7);
-		polylineModel.addOverlay(polyline);
+        posicao = parada.getLatitude()+","+parada.getLongitude();
 		
     }
 	
@@ -105,7 +99,6 @@ public class CadastrarParadaMB implements Serializable {
 	        }
 	        return mapa;
 	    }
-
 
 	public Parada getParada() {
 		return parada;
@@ -146,8 +139,16 @@ public class CadastrarParadaMB implements Serializable {
 	public void setPolylineModel(MapModel polylineModel) {
 		this.polylineModel = polylineModel;
 	}
-	
-	
+
+
+	public List<Onibus> getListaOnibus() {
+		return listaOnibus;
+	}
+
+
+	public void setListaOnibus(List<Onibus> listaOnibus) {
+		this.listaOnibus = listaOnibus;
+	}
 	
 
 }
