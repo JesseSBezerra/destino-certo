@@ -78,7 +78,7 @@ public class FacesContextUtil {
 	
 	//Metodo que pega a navegação
 		public static String getNavegacao(){
-			return (String) FacesContext.getCurrentInstance().getViewRoot().getViewId();
+			return FacesContext.getCurrentInstance().getViewRoot().getViewId();
 		}
 	
 	public static void logout(){

@@ -1,7 +1,7 @@
 package br.com.destino_certo.usuario.bean;
 
-import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import br.com.destino_certo.util.autenticar.FacesContextUtil;
 
