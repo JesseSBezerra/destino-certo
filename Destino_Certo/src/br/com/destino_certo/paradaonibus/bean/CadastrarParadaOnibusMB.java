@@ -78,7 +78,7 @@ public class CadastrarParadaOnibusMB implements Serializable{
 	
 	
 	public void carregarParada(){
-			Marker marker = new Marker(new LatLng(parada.getLatitude(), parada.getLongitude()),parada.getNome());
+			Marker marker = new Marker(new LatLng(parada.getLatitude(), parada.getLongitude()),parada.getLocal());
 			marker.setIcon("http://png-5.findicons.com/files/icons/903/travel/32/bus.png");	
 			polylineModel.addOverlay(marker);
 		}
