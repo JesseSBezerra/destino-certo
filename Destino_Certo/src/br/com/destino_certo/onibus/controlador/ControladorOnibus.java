@@ -1,6 +1,7 @@
 package br.com.destino_certo.onibus.controlador;
 
 import java.io.Serializable;
+import java.text.Normalizer;
 import java.util.List;
 
 import br.com.destino_certo.onibus.modelo.IRepositorioOnibus;
@@ -88,6 +89,23 @@ public class ControladorOnibus implements Serializable {
 	
 	public List<Onibus> listar(String nomeCampo,boolean valorCampo){
 		return iRepositorioOnibus.listar(nomeCampo,valorCampo);
+	}
+	
+	public String removeAcentos(String str) {
+		  str = Normalizer.normalize(str, Normalizer.Form.NFD);
+		  str = str.replaceAll("[^\\p{ASCII}]", "");
+		  return str;
+		}
+	
+	public String alteraNome(String nome){
+		nome = removeAcentos(nome);
+		String[] stringQuebrado = nome.split(" ");	
+		String concat = "";
+		for(int i = 0;i<stringQuebrado.length;i++){				
+			concat = concat + stringQuebrado[i]+"+";
+		}
+		System.out.println(concat);
+		return concat+"Recife+PE+BR";
 	}
 	
 	private boolean existe(Onibus onibus){
