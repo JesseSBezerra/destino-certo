@@ -26,7 +26,7 @@
 						<f:selectItem itemLabel=" .:Selecione:. " />
 						<f:selectItems var="parada"
 							value="#{cadastrarParadaOnibusMB.listaParadas}"
-							itemLabel="#{parada.nome}" itemValue="#{parada.numero}" />
+							itemLabel="#{parada.local}" itemValue="#{parada.numero}" />
 					</h:selectOneMenu>
 					<h:commandButton
 						actionListener="#{cadastrarParadaOnibusMB.selecionarParada}"
