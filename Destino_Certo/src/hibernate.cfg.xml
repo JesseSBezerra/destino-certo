@@ -19,6 +19,8 @@
         <mapping class="br.com.destino_certo.itinerario.modelo.Itinerario"/>
         <mapping class="br.com.destino_certo.parada.modelo.Parada"/>
         <mapping class="br.com.destino_certo.endereco.modelo.Endereco"/>
-         <mapping class="br.com.destino_certo.taxi.modelo.Taxi"/>
+        <mapping class="br.com.destino_certo.taxi.modelo.Taxi"/>
+        <mapping class="br.com.destino_certo.util.teste.ParadaUtil"/>
+        <mapping class="br.com.destino_certo.util.teste.CodigosParadas"/>
 	</session-factory>
 </hibernate-configuration>
