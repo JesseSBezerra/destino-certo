@@ -11,10 +11,11 @@ import org.json.simple.parser.JSONParser;
 
 public class Decode {
 	
-	public static Map<String, String> consultaMaps(String origem, String destino){
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public static Map consultaMaps(String origem, String destino){
 		JSONParser parser = new JSONParser();
 		String consulta = "http://maps.googleapis.com/maps/api/directions/json?origin="+origem+"&destination="+destino+"&sensor=false&mode=driving";
-	     Map<String, String> mapa = new HashMap<String, String>();	
+	     Map mapa = new HashMap();	
 		try {
 			Http http = new Http();
 	        String retorno = http.chamaUrl(consulta);
@@ -27,6 +28,21 @@ public class Decode {
 			JSONArray legs = (JSONArray) jsonObject1.get("legs");
 			Object legsQ = legs.get(0);
 			JSONObject jsonObjectL = (JSONObject) legsQ;
+			
+            //Trabalando pegando a localização de partidada e fim com base em latitude e longitude
+			
+		    JSONObject jsonObjectSL = (JSONObject)jsonObjectL.get("start_location");
+		    Double start_lat = (Double) jsonObjectSL.get("lat");
+		    Double start_lon = (Double) jsonObjectSL.get("lng");
+		    LatLng startLocation = new LatLng(start_lat, start_lon);
+		    
+		    JSONObject jsonObjectEL = (JSONObject)jsonObjectL.get("end_location");
+		    Double end_lat = (Double) jsonObjectEL.get("lat");
+		    Double end_lon = (Double) jsonObjectEL.get("lng");
+		    LatLng endLocation = new LatLng(end_lat, end_lon);
+		    
+			//fim
+			
 			JSONObject jsonObjectDs = (JSONObject) jsonObjectL.get("distance");
 			String distancia = (String) jsonObjectDs.get("text");
 			Long metros = (Long) jsonObjectDs.get("value");
@@ -34,6 +50,8 @@ public class Decode {
 			JSONObject jsonObject2 = (JSONObject) jsonObject1.get("overview_polyline");
 			String polilyne = (String) jsonObject2.get("points");
 			
+			mapa.put("startLocation", startLocation);
+			mapa.put("endLocation", endLocation);
 			mapa.put("poly", polilyne);
 			mapa.put("distancia", distancia);
 			mapa.put("metros", metros.toString());
