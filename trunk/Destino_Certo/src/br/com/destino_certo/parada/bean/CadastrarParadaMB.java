@@ -68,7 +68,7 @@ public class CadastrarParadaMB implements Serializable {
 	
 	public void carregarParadas(List<Parada> lista){
 		for(Parada parada:lista){
-			Marker marker = new Marker(new LatLng(parada.getLatitude(), parada.getLongitude()),parada.getNome());
+			Marker marker = new Marker(new LatLng(parada.getLatitude(), parada.getLongitude()),parada.getLocal());
 			marker.setIcon("http://png-5.findicons.com/files/icons/903/travel/32/bus.png");	
 			polylineModel.addOverlay(marker);
 		}

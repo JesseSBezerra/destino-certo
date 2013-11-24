@@ -80,7 +80,9 @@ public class RepositorioOnibus implements IRepositorioOnibus {
 	public List<Onibus> listar() {
 		// TODO Auto-generated method stub
 		iniciarTransacao();
-		return s.createCriteria(Onibus.class).list();
+		Criteria c = s.createCriteria(Onibus.class);
+		c.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		return c.list();
 	}
 
 	private void iniciarTransacao() {

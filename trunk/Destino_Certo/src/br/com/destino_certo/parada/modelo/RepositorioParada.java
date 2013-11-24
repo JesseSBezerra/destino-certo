@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
+import br.com.destino_certo.onibus.modelo.Onibus;
 import br.com.destino_certo.util.hibernate.HibernateUtil;
 
 public class RepositorioParada implements IRepositorioParada {
@@ -86,6 +87,7 @@ public class RepositorioParada implements IRepositorioParada {
 		// TODO Auto-generated method stub
 		iniciarTransacao();
 		Criteria c = s.createCriteria(Parada.class);
+		c.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		return c.list();
 	}
 

@@ -34,7 +34,7 @@ public class ListarParadaMB implements Serializable {
 	public List<Parada> listaAtiva(List<Parada> lista){
 		List<Parada> listaFiltrada = new ArrayList<Parada>();
 		for(Parada parada:lista){
-			if(!parada.getNome().toLowerCase().equals("contorno")){
+			if(!parada.getLocal().toLowerCase().equals("contorno")){
 				listaFiltrada.add(parada);
 			}
 		}
