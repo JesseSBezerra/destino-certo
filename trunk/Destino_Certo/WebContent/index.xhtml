@@ -18,27 +18,24 @@
 		<div class="painel_esquerdo">
 			<h:panelGrid columns="1">
 				<h:form>
-					<h:outputText value="Intinerário" />
+				<h:panelGrid columns="1">
+					<h:outputText value="Onde você está ?" />
+					<p:inputText value="#{destinoCertoMB.origem}"></p:inputText>
+					
+					<h:outputText value="Onde você deseja ir ?" />
+					<p:inputText value="#{destinoCertoMB.destino}"></p:inputText>
+               
+                    <h:commandButton value="pesquisar" actionListener="#{destinoCertoMB.selecionarDestino}"></h:commandButton>
 
-					<h:selectOneMenu styleClass="wh130"  style="font-size:16px; width:245px; height:32px;"
-						value="#{destinoCertoMB.idItinerario}">
-						<f:selectItem itemLabel=" .:Selecione:. " />
-						<f:selectItems var="itinerario"
-							value="#{destinoCertoMB.listaItinerario}"
-							itemLabel="#{itinerario.nome}" itemValue="#{itinerario.numero}" />
-					</h:selectOneMenu>
-
-					<h:commandButton
-						actionListener="#{destinoCertoMB.selecionarItinerario}"
-						value="Selecionar">
-					</h:commandButton>
-
-					<h:dataTable id="tabela" var="parada" style="font-size:16px; width:280px;"
-						value="#{destinoCertoMB.listaParada2}">
-						<h:column>
-						<h:outputText style="font-size:14px;" value="#{parada.ordem} - #{parada.nome}"></h:outputText>
-						</h:column>
-					</h:dataTable>
+<!-- 					<h:dataTable id="tabela" var="parada" style="font-size:16px; width:280px;" -->
+<!-- 						value="#{destinoCertoMB.listaParada2}"> -->
+<!-- 						<h:column> -->
+<!-- 						<h:outputText style="font-size:14px;" value="#{parada.ordem} - #{parada.nome}"></h:outputText> -->
+<!-- 						</h:column> -->
+<!-- 					</h:dataTable> -->
+<br/>
+<h:outputLabel value="#{destinoCertoMB.onibusPegar}"/>
+					 </h:panelGrid>
 
 				</h:form>
 
