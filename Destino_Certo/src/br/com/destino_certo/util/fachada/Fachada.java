@@ -100,6 +100,10 @@ public class Fachada {
 	public String onibusCadastrar(Onibus onibus) {
 		return controladorOnibus.cadastrar(onibus);
 	}
+	
+	public String onibusAjustarConsulta(String string) {
+		return controladorOnibus.alteraNome(string);
+	}
 
 	public String onibusRemover(Onibus onibus) {
 		return controladorOnibus.remover(onibus);
