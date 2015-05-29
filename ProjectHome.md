@@ -1,0 +1,1 @@
+Um software que através de dados coletados pelo usuário forneça uma rota entre os destinos, apresentando os pontos pelo qual o mesmo passará o sistema ainda deve calcular a distancia entre os pontos e calcular o possível gasto com a viagem em caso do mesmo selecionar a opção de ir de taxi
